@@ -1,0 +1,161 @@
+const assetPathPrefix = "https://www.figma.com/api/mcp/asset/5289607a-11e8-4b4b-a850-9bca71216575";
+const imgEllipse38 = `${assetPathPrefix}/24586.svg`;
+const imgArrowLeft2 = `${assetPathPrefix}/90c5a.svg`;
+const imgGroup87 = `${assetPathPrefix}/a616c.svg`;
+const imgGroup90 = `${assetPathPrefix}/de520.svg`;
+const imgEllipse46 = `${assetPathPrefix}/fd4f7.svg`;
+const imgEllipse44 = `${assetPathPrefix}/a79bb.svg`;
+const imgWallet = `${assetPathPrefix}/75870.svg`;
+
+export default function MobilePagamento() {
+  return (
+    <div className="bg-[var(--color\/ink,#140d0a)] content-stretch flex flex-col items-start overflow-clip px-[28px] py-[32px] relative rounded-[40px] size-full" data-node-id="16:748" data-name="Mobile / Pagamento">
+      <div className="content-stretch flex flex-[1_0_0] flex-col items-start justify-between min-h-px overflow-clip relative w-full" data-node-id="70398:239" data-name="Content">
+        <div className="content-stretch flex flex-col gap-[16px] items-start relative shrink-0 w-full" data-node-id="70410:4218">
+          <div className="h-[44px] relative shrink-0 w-[358px]" data-node-id="70398:240" data-name="Screen Header">
+            <div className="absolute contents left-0 top-0" data-node-id="16:757" data-name="Back">
+              <div className="absolute left-0 size-[35px] top-0" data-node-id="16:758">
+                <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgEllipse38} />
+              </div>
+              <div className="absolute inset-[15.91%_92.46%_38.64%_1.96%]" data-node-id="16:759" data-name="Iconly/Curved/Arrow - Left 2">
+                <div className="absolute flex inset-[20.83%_35.42%] items-center justify-center" data-node-id="I16:759;29221:4975" style={{ containerType: "size" }}>
+                  <div className="flex-none h-[100cqw] rotate-90 w-[100cqh]">
+                    <div className="relative size-full" data-name="Arrow - Left 2">
+                      <div className="absolute inset-[-12.86%_-6.43%]">
+                        <img alt="" className="block max-w-none size-full" src={imgArrowLeft2} />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <p className="[word-break:break-word] absolute font-[family-name:var(--font\/family,'Roboto_Mono:Bold')] font-bold leading-[16px] left-[59px] text-[20px] text-[color:var(--color\/foreground,#f5f1eb)] top-[9px] whitespace-nowrap" data-node-id="16:756">
+              Pagamento com carteira
+            </p>
+          </div>
+          <div className="[word-break:break-word] content-stretch flex font-[family-name:var(--font\/family,'Roboto_Mono:Bold')] font-bold items-center justify-between leading-[16px] relative shrink-0 w-full whitespace-nowrap" data-node-id="70304:365">
+            <p className="relative shrink-0 text-[16px] text-[color:var(--color\/foreground,#f5f1eb)]" data-node-id="16:844">
+              Carteira conectada
+            </p>
+            <p className="relative shrink-0 text-[14px] text-[color:var(--color\/text-accent,#e89b55)]" data-node-id="16:846">
+              Trocar carteira
+            </p>
+          </div>
+          <div className="content-stretch flex flex-col gap-[20px] items-start overflow-clip relative shrink-0" data-node-id="70398:241" data-name="Wallet Cards">
+            <div className="h-[93px] relative shrink-0 w-[358px]" data-node-id="70398:242" data-name="Wallet Card — Reserva">
+              <div className="absolute bg-[var(--color\/surface-card,#241612)] h-[93px] left-0 rounded-[14px] shadow-[0px_20px_20px_0px_rgba(10,6,4,0.45)] top-0 w-[358px]" data-node-id="16:987" />
+              <p className="[word-break:break-word] absolute font-[family-name:var(--font\/family,'Roboto_Mono:Bold')] font-bold leading-[16px] left-[54px] text-[16px] text-[color:var(--color\/foreground,#f5f1eb)] top-[15px] whitespace-nowrap" data-node-id="16:988">
+                Reserva
+              </p>
+              <div className="[word-break:break-word] absolute font-[family-name:var(--font\/family,'Roboto_Mono:Regular')] font-normal leading-[0] left-[54px] text-[14px] text-[color:var(--color\/text-secondary,#cfb28c)] top-[38px] w-[201px]" data-node-id="16:989">
+                <p className="leading-[22px] mb-0">nova.kurio.eth</p>
+                <p className="leading-[22px]">Rede Polygon</p>
+              </div>
+              <div className="absolute h-[15px] left-[336px] top-[39px] w-[3px]" data-node-id="16:990">
+                <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgGroup87} />
+              </div>
+              <div className="absolute left-[19px] size-[16px] top-[39px]" data-node-id="16:998">
+                <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgGroup90} />
+              </div>
+            </div>
+            <div className="h-[93px] relative shrink-0 w-[358px]" data-node-id="70398:243" data-name="Wallet Card — Principal">
+              <div className="absolute bg-[var(--color\/surface-card,#241612)] h-[93px] left-0 rounded-[14px] top-0 w-[358px]" data-node-id="16:980" />
+              <p className="[word-break:break-word] absolute font-[family-name:var(--font\/family,'Roboto_Mono:Bold')] font-bold leading-[16px] left-[54px] text-[16px] text-[color:var(--color\/foreground,#f5f1eb)] top-[16px] whitespace-nowrap" data-node-id="16:981">
+                Principal
+              </p>
+              <div className="[word-break:break-word] absolute font-[family-name:var(--font\/family,'Roboto_Mono:Regular')] font-normal leading-[0] left-[54px] text-[14px] text-[color:var(--color\/text-secondary,#cfb28c)] top-[38px] w-[203px]" data-node-id="16:982">
+                <p className="leading-[22px] mb-0">0xA91F…E82C</p>
+                <p className="leading-[22px]">Rede principal Ethereum</p>
+              </div>
+              <div className="absolute h-[15px] left-[336px] top-[39px] w-[3px]" data-node-id="16:983">
+                <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgGroup87} />
+              </div>
+              <div className="absolute left-[19px] size-[16px] top-[38px]" data-node-id="16:1001">
+                <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgEllipse46} />
+              </div>
+            </div>
+          </div>
+          <div className="content-stretch flex flex-col gap-[16px] items-start overflow-clip relative shrink-0" data-node-id="70398:244" data-name="Wallet Options">
+            <p className="[word-break:break-word] font-[family-name:var(--font\/family,'Roboto_Mono:Bold')] font-bold leading-[16px] relative shrink-0 text-[16px] text-[color:var(--color\/foreground,#f5f1eb)] whitespace-nowrap" data-node-id="16:852">
+              Carteira e rede
+            </p>
+            <div className="h-[65px] relative shrink-0 w-[359px]" data-node-id="70398:245" data-name="Option — WalletConnect">
+              <div className="absolute bg-[var(--color\/surface-card,#241612)] h-[65px] left-0 rounded-[15px] shadow-[0px_0px_20px_0px_rgba(10,6,4,0.45)] top-0 w-[359px]" data-node-id="16:892" />
+              <div className="absolute left-[14px] size-[40px] top-[13px]" data-node-id="16:893">
+                <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgEllipse44} />
+              </div>
+              <p className="[word-break:break-word] absolute font-[family-name:var(--font\/family,'Roboto_Mono:Regular')] font-normal leading-[16px] left-[65px] text-[14px] text-[color:var(--color\/foreground,#f5f1eb)] top-[25px] whitespace-nowrap" data-node-id="16:894">
+                WalletConnect
+              </p>
+              <div className="absolute left-[326px] size-[16px] top-[25px]" data-node-id="16:895">
+                <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgEllipse46} />
+              </div>
+              <p className="[word-break:break-word] absolute font-[family-name:var(--font\/family,'Roboto_Mono:Bold')] font-bold leading-[normal] left-[27px] text-[14px] text-[color:var(--color\/text-accent,#e89b55)] top-[24px] whitespace-nowrap" data-node-id="70243:316">
+                W
+              </p>
+            </div>
+            <div className="h-[65px] relative shrink-0 w-[359px]" data-node-id="70398:246" data-name="Option — MetaMask">
+              <div className="absolute bg-[var(--color\/surface-card,#241612)] h-[65px] left-0 rounded-[15px] shadow-[0px_0px_20px_0px_rgba(10,6,4,0.45)] top-0 w-[359px]" data-node-id="16:885" />
+              <div className="absolute left-[14px] size-[40px] top-[13px]" data-node-id="16:886">
+                <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgEllipse44} />
+              </div>
+              <p className="[word-break:break-word] absolute font-[family-name:var(--font\/family,'Roboto_Mono:Regular')] font-normal leading-[16px] left-[65px] text-[14px] text-[color:var(--color\/foreground,#f5f1eb)] top-[25px] whitespace-nowrap" data-node-id="16:889">
+                MetaMask
+              </p>
+              <div className="absolute left-[326px] size-[16px] top-[25px]" data-node-id="16:890">
+                <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgEllipse46} />
+              </div>
+              <p className="[word-break:break-word] absolute font-[family-name:var(--font\/family,'Roboto_Mono:Bold')] font-bold leading-[normal] left-[28px] text-[14px] text-[color:var(--color\/text-accent,#e89b55)] top-[24px] whitespace-nowrap" data-node-id="70243:315">
+                M
+              </p>
+            </div>
+            <div className="h-[65px] relative shrink-0 w-[359px]" data-node-id="70398:247" data-name="Option — Coinbase">
+              <div className="absolute bg-[var(--color\/surface-card,#241612)] h-[65px] left-0 rounded-[15px] shadow-[0px_0px_40px_0px_rgba(10,6,4,0.45)] top-0 w-[359px]" data-node-id="16:858" />
+              <div className="absolute left-[14px] size-[40px] top-[13px]" data-node-id="16:867">
+                <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgEllipse44} />
+              </div>
+              <p className="[word-break:break-word] absolute font-[family-name:var(--font\/family,'Roboto_Mono:Regular')] font-normal leading-[16px] left-[65px] text-[14px] text-[color:var(--color\/foreground,#f5f1eb)] top-[25px] whitespace-nowrap" data-node-id="16:854">
+                Coinbase Wallet
+              </p>
+              <div className="absolute left-[326px] size-[16px] top-[25px]" data-node-id="16:994">
+                <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgGroup90} />
+              </div>
+              <div className="absolute inset-[32.31%_87.19%_30.77%_6.13%]" data-node-id="23:1379" data-name="Iconly/Curved/Wallet">
+                <div className="absolute inset-[15.48%_11.19%_13.37%_11.31%]" data-node-id="I23:1379;23:1374" data-name="Wallet">
+                  <div className="absolute inset-[-4.39%_-4.03%]">
+                    <img alt="" className="block max-w-none size-full" src={imgWallet} />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="content-stretch flex items-start justify-end overflow-clip relative shrink-0 w-full" data-node-id="70398:248" data-name="Total Row">
+            <div className="[word-break:break-word] content-stretch flex font-[family-name:var(--font\/family,'Roboto_Mono:Bold')] font-bold gap-[28px] items-center leading-[16px] relative shrink-0 whitespace-nowrap" data-node-id="70304:366">
+              <p className="relative shrink-0 text-[16px] text-[color:var(--color\/foreground,#f5f1eb)]" data-node-id="16:832">
+                Total:
+              </p>
+              <p className="relative shrink-0 text-[18px] text-[color:var(--color\/text-accent,#e89b55)] text-right" data-node-id="16:835">
+                8.936 ETH
+              </p>
+            </div>
+          </div>
+        </div>
+        <div className="content-stretch flex h-[60px] items-center justify-center overflow-clip relative rounded-[40px] shrink-0 w-[358px]" data-node-id="70398:249" style={{ backgroundImage: "linear-gradient(108.47558001670018deg, rgb(210, 138, 76) 3.9595%, rgba(210, 138, 76, 0.8) 121.97%)" }} data-name="Confirm Button">
+          <p className="[word-break:break-word] font-[family-name:var(--font\/family,'Roboto_Mono:Bold')] font-bold leading-[16px] relative shrink-0 text-[15px] text-[color:var(--color\/ink,#140d0a)] text-center whitespace-nowrap" data-node-id="16:761">
+            Confirmar compra
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+SUPER CRITICAL: The generated React+Tailwind code MUST be converted to match the target project's technology stack and styling system.
+1. Analyze the target codebase to identify: technology stack, styling approach, component patterns, and design tokens
+2. Convert React syntax to the target framework/library
+3. Transform all Tailwind classes to the target styling system while preserving exact visual design
+4. Follow the project's existing patterns and conventions
+DO NOT install any Tailwind as a dependency unless the user instructs you to do so.
+
+Node ids have been added to the code as data attributes, e.g. `data-node-id="1:2"`.
+These styles are contained in the design: Color/Surface Raised: #2F1D15, Color/Border: #3F2319, Color/Secondary: #B39463, Color/Foreground: #F5F1EB, Title/20 Bold · lh 16: Font(family: "font/family", style: Bold, size: 20, weight: 700, lineHeight: 16, letterSpacing: 0), Body Large/16 Bold · lh 16: Font(family: "font/family", style: Bold, size: 16, weight: 700, lineHeight: 16, letterSpacing: 0), Text/Accent: #E89B55, Body/14 Bold · lh 16: Font(family: "font/family", style: Bold, size: 14, weight: 700, lineHeight: 16, letterSpacing: 0), Color/Surface Card: #241612, Text/Secondary: #CFB28C, Body/14 Regular · lh 22: Font(family: "font/family", style: Regular, size: 14, weight: 400, lineHeight: 22, letterSpacing: 0), Color/Primary: #D28A4C, Color/Border Soft: #55321F, Body/14 Regular · lh 16: Font(family: "font/family", style: Regular, size: 14, weight: 400, lineHeight: 16, letterSpacing: 0), Body/14 Bold · lh auto · ls 0%: Font(family: "font/family", style: Bold, size: 14, weight: 700, lineHeight: 100, letterSpacing: 0), Body Large/18 Bold · lh 16: Font(family: "font/family", style: Bold, size: 18, weight: 700, lineHeight: 16, letterSpacing: 0), Color/Ink: #140D0A, Body/15 Bold · lh 16: Font(family: "font/family", style: Bold, size: 15, weight: 700, lineHeight: 16, letterSpacing: 0).
+The generated code contains image and SVG URL constants, e.g. const image = `${assetPathPrefix}/<asset file name>`, where assetPathPrefix is declared once at the top of the code and every asset URL interpolates it. These URLs are temporary download sources and expire after 7 days. Download each asset into the project with curl -L, then replace its URL in the generated code with a reference to the downloaded asset. Never use the temporary URLs as runtime image sources.

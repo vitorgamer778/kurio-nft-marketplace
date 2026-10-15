@@ -1,0 +1,12 @@
+audits
+design-reference
+tests
+test-results
+playwright-report
+verification
+screenshots
+node_modules
+CHALLENGE.md
+API.md
+ARCHITECTURE.md
+EVALUATION.md

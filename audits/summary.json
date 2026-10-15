@@ -1,0 +1,235 @@
+{
+  "environment": {
+    "node": "v24.19.0",
+    "platform": "win32",
+    "release": "10.0.26300",
+    "cpu": "AMD Ryzen 5 5600GT with Radeon Graphics        ",
+    "lighthouse": "13.5.0",
+    "playwright": "1.64.1"
+  },
+  "conditions": "Optimized Vite preview, real local Figma assets/fonts, MSW standard, headless Chromium, Lighthouse simulated throttling, 3 consecutive runs per page/profile.",
+  "summary": [
+    {
+      "page": "home",
+      "profile": "mobile",
+      "scores": {
+        "performance": 84,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "lcp": 4040.576725,
+      "cls": 0,
+      "tbt": 67
+    },
+    {
+      "page": "home",
+      "profile": "desktop",
+      "scores": {
+        "performance": 98,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "lcp": 1039.5874,
+      "cls": 0.002808984375,
+      "tbt": 0
+    },
+    {
+      "page": "detail",
+      "profile": "mobile",
+      "scores": {
+        "performance": 88,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "lcp": 3668.193175,
+      "cls": 0.0008497958045511798,
+      "tbt": 40
+    },
+    {
+      "page": "detail",
+      "profile": "desktop",
+      "scores": {
+        "performance": 99,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "lcp": 877.3472500000001,
+      "cls": 0.0007350549768518519,
+      "tbt": 0
+    }
+  ],
+  "results": [
+    {
+      "page": "home",
+      "profile": "mobile",
+      "run": 1,
+      "scores": {
+        "performance": 84,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "lcp": 4126.710000000001,
+      "cls": 0,
+      "tbt": 75
+    },
+    {
+      "page": "home",
+      "profile": "mobile",
+      "run": 2,
+      "scores": {
+        "performance": 85,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "lcp": 4040.576725,
+      "cls": 0,
+      "tbt": 64
+    },
+    {
+      "page": "home",
+      "profile": "mobile",
+      "run": 3,
+      "scores": {
+        "performance": 84,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "lcp": 4040.4103749999995,
+      "cls": 0,
+      "tbt": 67
+    },
+    {
+      "page": "detail",
+      "profile": "mobile",
+      "run": 1,
+      "scores": {
+        "performance": 88,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "lcp": 3668.193175,
+      "cls": 0.0008497958045511798,
+      "tbt": 48
+    },
+    {
+      "page": "detail",
+      "profile": "mobile",
+      "run": 2,
+      "scores": {
+        "performance": 88,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "lcp": 3660.8254500000003,
+      "cls": 0.0008497958045511798,
+      "tbt": 38
+    },
+    {
+      "page": "detail",
+      "profile": "mobile",
+      "run": 3,
+      "scores": {
+        "performance": 87,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "lcp": 3741.5401250000004,
+      "cls": 0.0008497958045511798,
+      "tbt": 40
+    },
+    {
+      "page": "home",
+      "profile": "desktop",
+      "run": 1,
+      "scores": {
+        "performance": 98,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "lcp": 1040.3708,
+      "cls": 0.002808984375,
+      "tbt": 0
+    },
+    {
+      "page": "home",
+      "profile": "desktop",
+      "run": 2,
+      "scores": {
+        "performance": 98,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "lcp": 1027.1761999999999,
+      "cls": 0.0008762586805555556,
+      "tbt": 0
+    },
+    {
+      "page": "home",
+      "profile": "desktop",
+      "run": 3,
+      "scores": {
+        "performance": 98,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "lcp": 1039.5874,
+      "cls": 0.002808984375,
+      "tbt": 0
+    },
+    {
+      "page": "detail",
+      "profile": "desktop",
+      "run": 1,
+      "scores": {
+        "performance": 99,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "lcp": 975.4869999999999,
+      "cls": 0.0007350549768518519,
+      "tbt": 0
+    },
+    {
+      "page": "detail",
+      "profile": "desktop",
+      "run": 2,
+      "scores": {
+        "performance": 99,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "lcp": 867.5355,
+      "cls": 0.0007350549768518519,
+      "tbt": 0
+    },
+    {
+      "page": "detail",
+      "profile": "desktop",
+      "run": 3,
+      "scores": {
+        "performance": 99,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "lcp": 877.3472500000001,
+      "cls": 0.0007350549768518519,
+      "tbt": 0
+    }
+  ]
+}

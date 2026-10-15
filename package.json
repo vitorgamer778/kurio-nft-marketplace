@@ -1,0 +1,69 @@
+{
+  "name": "kurio-nft-marketplace",
+  "version": "1.0.0",
+  "description": "Kurio NFT Marketplace — Jungle Gaming frontend challenge",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src",
+    "test": "playwright test",
+    "test:update": "playwright test --update-snapshots",
+    "audit": "node scripts/audit.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vitorgamer778/kurio-nft-marketplace.git"
+  },
+  "keywords": [],
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/vitorgamer778/kurio-nft-marketplace/issues"
+  },
+  "homepage": "https://github.com/vitorgamer778/kurio-nft-marketplace",
+  "dependencies": {
+    "@fontsource/roboto-mono": "^5.3.0",
+    "@mswjs/socket.io-binding": "^0.2.0",
+    "@radix-ui/react-dialog": "^1.3.1",
+    "@radix-ui/react-slot": "^1.5.0",
+    "@tailwindcss/vite": "^4.3.3",
+    "@tanstack/react-query": "^5.104.3",
+    "@tanstack/react-router": "^1.170.44",
+    "axios": "^1.20.0",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lucide-react": "^1.57.0",
+    "msw": "^2.15.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "socket.io-client": "^4.8.4",
+    "tailwind-merge": "^3.7.0",
+    "tailwindcss": "^4.3.3"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@playwright/test": "^1.64.1",
+    "@types/node": "^26.6.5",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "eslint": "^10.12.0",
+    "globals": "^17.13.0",
+    "lighthouse": "^13.5.0",
+    "prettier": "^3.9.10",
+    "sharp": "^0.35.5",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.71.2",
+    "vite": "^8.3.4"
+  },
+  "msw": {
+    "workerDirectory": [
+      "public"
+    ]
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  }
+}

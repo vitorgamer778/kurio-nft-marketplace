@@ -1,0 +1,701 @@
+const assetPathPrefix = "https://www.figma.com/api/mcp/asset/a4e403af-f0b0-453c-ab04-8fe593f9919a";
+const imgMessage = `${assetPathPrefix}/bec29.svg`;
+const imgNftCollectionArtwork04 = `${assetPathPrefix}/8f387.png`;
+const imgNftCollectionArtwork06 = `${assetPathPrefix}/83794.png`;
+const imgNftCollectionArtwork08 = `${assetPathPrefix}/9add2.png`;
+const imgNftCollectionArtwork09 = `${assetPathPrefix}/b7cfc.png`;
+const imgActiveUnderline = `${assetPathPrefix}/c902b.svg`;
+const imgSearchIcon = `${assetPathPrefix}/bd8c9.svg`;
+const imgCartIcon = `${assetPathPrefix}/c0c08.svg`;
+const imgBadge = `${assetPathPrefix}/aa630.svg`;
+const imgLogout = `${assetPathPrefix}/62554.svg`;
+const imgFrame238 = `${assetPathPrefix}/9ae7b.svg`;
+const imgStar = `${assetPathPrefix}/19a5f.svg`;
+const imgStar1 = `${assetPathPrefix}/89357.svg`;
+const imgLine2 = `${assetPathPrefix}/571ff.svg`;
+const imgEllipse24 = `${assetPathPrefix}/091e2.svg`;
+const imgEllipse25 = `${assetPathPrefix}/a9dab.svg`;
+const imgEllipse26 = `${assetPathPrefix}/c4842.svg`;
+const imgEllipse27 = `${assetPathPrefix}/6605d.svg`;
+const imgFrame = `${assetPathPrefix}/7d18c.svg`;
+const imgFrame1 = `${assetPathPrefix}/a803c.svg`;
+const imgHeart1 = `${assetPathPrefix}/d427d.svg`;
+const imgLinkedin = `${assetPathPrefix}/a4abe.svg`;
+const imgTwitter = `${assetPathPrefix}/fbcbd.svg`;
+const imgLine6 = `${assetPathPrefix}/47069.svg`;
+const imgLine5 = `${assetPathPrefix}/73b34.svg`;
+const imgCarouselDots = `${assetPathPrefix}/8db8a.svg`;
+const imgFrame108 = `${assetPathPrefix}/99280.svg`;
+const imgFrame109 = `${assetPathPrefix}/d48dd.svg`;
+const imgFrame110 = `${assetPathPrefix}/b4111.svg`;
+const imgFrame111 = `${assetPathPrefix}/b8b84.svg`;
+const imgFrame112 = `${assetPathPrefix}/ca2da.svg`;
+
+function Message({ className }: { className?: string }) {
+  return (
+    <div className={className || "relative size-[18px]"} data-node-id="11:1248" data-name="Message">
+      <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgMessage} />
+    </div>
+  );
+}
+
+export default function DesktopDetalhesDoNft() {
+  return (
+    <div className="bg-[var(--color\/ink,#140d0a)] content-stretch flex flex-col gap-[96px] items-start px-[120px] py-[24px] relative size-full" data-node-id="10:244" data-name="Desktop / Detalhes do NFT">
+      <div className="content-stretch flex flex-col gap-[32px] items-end relative shrink-0 w-full" data-node-id="70342:2770" data-name="Top">
+        <div className="content-stretch flex items-start justify-between relative shrink-0 w-full" data-node-id="70488:626" data-name="Header Row">
+          <div className="h-[34.3px] overflow-clip relative shrink-0 w-[160px]" data-node-id="I70488:626;70486:535" data-name="Logo">
+            <p className="[word-break:break-word] absolute font-[family-name:var(--font\/family,'Roboto_Mono:Bold')] font-bold leading-[normal] left-0 text-[14px] text-[color:var(--color\/foreground,#f5f1eb)] top-[8.15px] tracking-[1.4px] whitespace-nowrap" data-node-id="I70488:626;70486:536">
+              KURIO
+            </p>
+          </div>
+          <div className="content-stretch flex gap-[40px] items-start overflow-clip relative shrink-0" data-node-id="I70488:626;70486:537" data-name="Nav">
+            <p className="[word-break:break-word] font-[family-name:var(--font\/family,'Roboto_Mono:Regular')] font-normal leading-[normal] relative shrink-0 text-[16px] text-[color:var(--color\/foreground,#f5f1eb)] whitespace-nowrap" data-node-id="I70488:626;70486:538">
+              Início
+            </p>
+            <div className="content-stretch flex flex-col gap-[24px] items-start relative shrink-0" data-node-id="I70488:626;70486:539" data-name="Nav Item">
+              <p className="[word-break:break-word] font-[family-name:var(--font\/family,'Roboto_Mono:Bold')] font-bold leading-[normal] relative shrink-0 text-[16px] text-[color:var(--color\/text-accent,#e89b55)] whitespace-nowrap" data-node-id="I70488:626;70486:540">
+                Mercado
+              </p>
+              <div className="h-0 relative shrink-0 w-full" data-node-id="I70488:626;70486:541" data-name="Active Underline">
+                <div className="absolute inset-[-3px_0_0_0]">
+                  <img alt="" className="block max-w-none size-full" src={imgActiveUnderline} />
+                </div>
+              </div>
+            </div>
+            <p className="[word-break:break-word] font-[family-name:var(--font\/family,'Roboto_Mono:Regular')] font-normal leading-[normal] relative shrink-0 text-[16px] text-[color:var(--color\/foreground,#f5f1eb)] whitespace-nowrap" data-node-id="I70488:626;70486:542">
+              Criadores
+            </p>
+            <p className="[word-break:break-word] font-[family-name:var(--font\/family,'Roboto_Mono:Regular')] font-normal leading-[normal] relative shrink-0 text-[16px] text-[color:var(--color\/foreground,#f5f1eb)] whitespace-nowrap" data-node-id="I70488:626;70486:543">
+              Aprenda
+            </p>
+          </div>
+          <div className="content-stretch flex gap-[28px] items-center relative shrink-0" data-node-id="I70488:626;70486:544" data-name="Header Actions">
+            <div className="h-[20px] relative shrink-0 w-[20.001px]" data-node-id="I70488:626;70486:545" data-name="Search Icon">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgSearchIcon} />
+            </div>
+            <div className="grid-cols-[max-content] grid-rows-[max-content] inline-grid leading-[0] place-items-start relative shrink-0" data-node-id="I70488:626;70486:546" data-name="Cart">
+              <div className="col-1 h-[24px] ml-0 mt-0 relative row-1 w-[24.004px]" data-node-id="I70488:626;70486:547" data-name="Cart Icon">
+                <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgCartIcon} />
+              </div>
+              <div className="col-1 ml-[15px] mt-0 relative row-1 size-[16px]" data-node-id="I70488:626;70486:548" data-name="Badge">
+                <div className="absolute inset-[-12.5%]">
+                  <img alt="" className="block max-w-none size-full" src={imgBadge} />
+                </div>
+              </div>
+              <p className="[word-break:break-word] col-1 font-[family-name:var(--font\/family,'Roboto_Mono:Medium')] font-medium leading-[normal] ml-[20px] mt-[1.5px] relative row-1 text-[10px] text-[color:var(--color\/ink,#140d0a)] whitespace-nowrap" data-node-id="I70488:626;70486:549">
+                6
+              </p>
+            </div>
+            <div className="grid-cols-[max-content] grid-rows-[max-content] inline-grid leading-[0] place-items-start relative shrink-0" data-node-id="I70488:626;70486:550" data-name="Login">
+              <div className="bg-[var(--color\/primary,#d28a4c)] col-1 content-stretch flex flex-col h-[35px] items-center justify-center ml-0 mt-0 relative rounded-[6px] row-1 w-[100px]" data-node-id="I70488:626;70486:551" data-name="Login Button">
+                <div className="content-stretch flex gap-[4px] items-start relative shrink-0" data-node-id="I70488:626;70486:552" data-name="Login Button Content">
+                  <div className="relative shrink-0 size-[20px]" data-node-id="I70488:626;70486:553" data-name="Iconly/Curved/Logout">
+                    <div className="absolute inset-[11.46%_9.2%_11.46%_9.41%]" data-node-id="I70488:626;70486:553;29221:4777" data-name="Logout">
+                      <div className="absolute inset-[-4.86%_-4.61%]">
+                        <img alt="" className="block max-w-none size-full" src={imgLogout} />
+                      </div>
+                    </div>
+                  </div>
+                  <p className="[word-break:break-word] font-[family-name:var(--font\/family,'Roboto_Mono:Medium')] font-medium leading-[normal] relative shrink-0 text-[16px] text-[color:var(--color\/ink,#140d0a)] whitespace-nowrap" data-node-id="I70488:626;70486:554">
+                    Entrar
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="content-stretch flex flex-col gap-[12px] items-start overflow-clip relative shrink-0 w-full" data-node-id="70362:239" data-name="Main">
+          <p className="[word-break:break-word] font-[family-name:var(--font\/family,'Roboto_Mono:Bold')] font-bold leading-[16px] relative shrink-0 text-[15px] text-[color:var(--color\/foreground,#f5f1eb)] whitespace-nowrap" data-node-id="10:290">
+            Início / Mercado
+          </p>
+          <div className="content-stretch flex gap-[32px] items-start relative shrink-0 w-full" data-node-id="70342:2764" data-name="Product">
+            <div className="content-stretch flex gap-[28px] h-[448px] items-center relative shrink-0 w-[573px]" data-node-id="70363:239" data-name="Product Images">
+              <div className="absolute bg-[var(--color\/surface-card,#241612)] left-0 rounded-[6px] size-[100px] top-0" data-node-id="11:1074" />
+              <div className="absolute bg-[var(--color\/surface-card,#241612)] left-0 rounded-[6px] size-[100px] top-[116px]" data-node-id="11:1075" />
+              <div className="absolute bg-[var(--color\/surface-card,#241612)] left-0 rounded-[6px] size-[100px] top-[232px]" data-node-id="11:1076" />
+              <div className="absolute bg-[var(--color\/surface-card,#241612)] left-0 rounded-[6px] size-[100px] top-[348px]" data-node-id="11:1077" />
+              <div className="content-stretch flex flex-col gap-[16px] items-start relative shrink-0 w-[100px]" data-node-id="70342:2682" data-name="Thumbnails">
+                <div className="h-[100px] relative rounded-[8px] shrink-0 w-full" data-node-id="11:1181" data-name="NFT Collection Artwork 04">
+                  <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none rounded-[8px] size-full" src={imgNftCollectionArtwork04} />
+                </div>
+                <div className="border border-[var(--color\/primary,#d28a4c)] border-solid h-[100px] relative rounded-[8px] shrink-0 w-full" data-node-id="11:1188" data-name="NFT Collection Artwork 02">
+                  <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none rounded-[8px] size-full" src={imgNftCollectionArtwork04} />
+                </div>
+                <div className="h-[100px] relative rounded-[8px] shrink-0 w-full" data-node-id="11:1189" data-name="NFT Collection Artwork 05">
+                  <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none rounded-[8px] size-full" src={imgNftCollectionArtwork04} />
+                </div>
+                <div className="h-[100px] relative rounded-[8px] shrink-0 w-full" data-node-id="11:1190" data-name="NFT Collection Artwork 03">
+                  <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none rounded-[8px] size-full" src={imgNftCollectionArtwork04} />
+                </div>
+              </div>
+              <div className="bg-[var(--color\/surface-card,#241612)] content-stretch flex items-center justify-center p-[16px] relative rounded-[6px] shrink-0 size-[444px]" data-node-id="70342:2683" data-name="Main Image">
+                <div className="relative rounded-[24px] shrink-0 size-[404px]" data-node-id="11:1161" data-name="NFT Collection Artwork 01">
+                  <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none rounded-[24px] size-full" src={imgNftCollectionArtwork04} />
+                </div>
+              </div>
+              <div className="absolute content-stretch flex items-center justify-center left-[530px] top-[15px]" data-node-id="70410:3937">
+                <div className="relative shrink-0 size-[30px]" data-node-id="70380:2856">
+                  <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgFrame238} />
+                </div>
+              </div>
+            </div>
+            <div className="content-stretch flex flex-[1_0_0] flex-col items-start justify-between min-w-px relative self-stretch" data-node-id="70342:2763" data-name="Details">
+              <div className="content-stretch flex flex-col gap-[12px] items-start relative shrink-0 w-full" data-node-id="70342:2686">
+                <div className="content-stretch flex flex-col gap-[12px] items-start relative shrink-0 w-full" data-node-id="70342:2685">
+                  <p className="[word-break:break-word] font-[family-name:var(--font\/family,'Roboto_Mono:Bold')] font-bold leading-[normal] relative shrink-0 text-[28px] text-[color:var(--color\/foreground,#f5f1eb)] w-full" data-node-id="11:1132">
+                    Emerald Ape #042
+                  </p>
+                  <div className="content-stretch flex items-center justify-between relative shrink-0 w-full" data-node-id="70342:2684">
+                    <p className="[word-break:break-word] font-[family-name:var(--font\/family,'Roboto_Mono:Bold')] font-bold leading-[16px] relative shrink-0 text-[22px] text-[color:var(--color\/text-accent,#e89b55)] whitespace-nowrap" data-node-id="11:1141">
+                      1.19 ETH
+                    </p>
+                    <div className="content-stretch flex gap-[4px] items-center relative shrink-0" data-node-id="11:1210">
+                      <div className="relative shrink-0 size-[15px]" data-node-id="11:1195" data-name="Iconly/Bold/Star">
+                        <div className="absolute inset-[10.42%_8.32%_10.41%_8.33%]" data-node-id="I11:1195;11:1193" data-name="Star">
+                          <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgStar} />
+                        </div>
+                      </div>
+                      <div className="relative shrink-0 size-[15px]" data-node-id="11:1198" data-name="Iconly/Bold/Star">
+                        <div className="absolute inset-[10.42%_8.32%_10.41%_8.33%]" data-node-id="I11:1198;11:1193" data-name="Star">
+                          <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgStar} />
+                        </div>
+                      </div>
+                      <div className="relative shrink-0 size-[15px]" data-node-id="11:1201" data-name="Iconly/Bold/Star">
+                        <div className="absolute inset-[10.42%_8.32%_10.41%_8.33%]" data-node-id="I11:1201;11:1193" data-name="Star">
+                          <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgStar} />
+                        </div>
+                      </div>
+                      <div className="relative shrink-0 size-[15px]" data-node-id="11:1204" data-name="Iconly/Bold/Star">
+                        <div className="absolute inset-[10.42%_8.32%_10.41%_8.33%]" data-node-id="I11:1204;11:1193" data-name="Star">
+                          <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgStar} />
+                        </div>
+                      </div>
+                      <div className="relative shrink-0 size-[15px]" data-node-id="11:1207" data-name="Iconly/Bold/Star">
+                        <div className="absolute inset-[10.42%_8.32%_10.41%_8.33%]" data-node-id="I11:1207;11:1193" data-name="Star">
+                          <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgStar1} />
+                        </div>
+                      </div>
+                      <p className="[word-break:break-word] font-[family-name:var(--font\/family,'Roboto_Mono:Regular')] font-normal leading-[normal] relative shrink-0 text-[15px] text-[color:var(--color\/foreground,#f5f1eb)] whitespace-nowrap" data-node-id="11:1191">
+                        19 avaliações de colecionadores
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="h-0 relative shrink-0 w-[573px]" data-node-id="11:1211">
+                  <div className="absolute inset-[-0.3px_0_0_0]">
+                    <img alt="" className="block max-w-none size-full" src={imgLine2} />
+                  </div>
+                </div>
+              </div>
+              <div className="[word-break:break-word] content-stretch flex flex-col gap-[12px] items-start relative shrink-0 w-[574px]" data-node-id="70342:2687">
+                <p className="font-[family-name:var(--font\/family,'Roboto_Mono:Bold')] font-bold leading-[16px] relative shrink-0 text-[15px] text-[color:var(--color\/foreground,#f5f1eb)] w-full" data-node-id="11:1214">
+                  Sobre este NFT:
+                </p>
+                <p className="font-[family-name:var(--font\/family,'Roboto_Mono:Regular')] font-normal h-[66px] leading-[24px] relative shrink-0 text-[14px] text-[color:var(--color\/text-secondary,#cfb28c)] w-full" data-node-id="11:1215">
+                  Um colecionável digital finalizado à mão da coleção Kurio Editions, verificado na Ethereum, com arte desbloqueável e acesso para colecionadores.
+                </p>
+              </div>
+              <div className="content-stretch flex flex-col gap-[12px] items-start relative shrink-0 w-[209px]" data-node-id="70342:2696">
+                <p className="[word-break:break-word] font-[family-name:var(--font\/family,'Roboto_Mono:Bold')] font-bold leading-[16px] relative shrink-0 text-[15px] text-[color:var(--color\/foreground,#f5f1eb)] w-full" data-node-id="11:1216">
+                  Edição:
+                </p>
+                <div className="content-stretch flex gap-[6px] items-center relative shrink-0 w-full" data-node-id="70342:2695">
+                  <div className="content-stretch flex gap-[10px] h-[28px] items-center justify-center px-[4px] py-[6px] relative shrink-0 w-[36px]" data-node-id="70342:2694">
+                    <div className="absolute h-[28px] left-0 top-0 w-[36px]" data-node-id="11:1217">
+                      <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgEllipse24} />
+                    </div>
+                    <p className="[word-break:break-word] font-[family-name:var(--font\/family,'Roboto_Mono:Regular')] font-normal leading-[16px] relative shrink-0 text-[14px] text-[color:var(--color\/text-secondary,#cfb28c)] whitespace-nowrap" data-node-id="11:1219">
+                      1/1
+                    </p>
+                  </div>
+                  <div className="content-stretch flex gap-[10px] h-[28px] items-center justify-center px-[4px] py-[6px] relative shrink-0 w-[42px]" data-node-id="70342:2691">
+                    <div className="absolute h-[28px] left-0 top-0 w-[42px]" data-node-id="11:1220">
+                      <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgEllipse25} />
+                    </div>
+                    <p className="[word-break:break-word] font-[family-name:var(--font\/family,'Roboto_Mono:Regular')] font-normal leading-[16px] relative shrink-0 text-[14px] text-[color:var(--color\/text-secondary,#cfb28c)] text-center whitespace-nowrap" data-node-id="11:1221">
+                      1/10
+                    </p>
+                  </div>
+                  <div className="content-stretch flex gap-[10px] h-[28px] items-center justify-center p-[6px] relative shrink-0 w-[46px]" data-node-id="70342:2692">
+                    <div className="absolute h-[28px] left-0 top-0 w-[46px]" data-node-id="11:1222">
+                      <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgEllipse26} />
+                    </div>
+                    <p className="[word-break:break-word] font-[family-name:var(--font\/family,'Roboto_Mono:Medium')] font-medium leading-[16px] relative shrink-0 text-[14px] text-[color:var(--color\/text-accent,#e89b55)] text-center whitespace-nowrap" data-node-id="11:1223">
+                      1/50
+                    </p>
+                  </div>
+                  <div className="content-stretch flex gap-[10px] h-[28px] items-center justify-center px-[8px] py-[6px] relative shrink-0 w-[66px]" data-node-id="70342:2693">
+                    <div className="absolute h-[28px] left-0 top-0 w-[66px]" data-node-id="11:1224">
+                      <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgEllipse27} />
+                    </div>
+                    <p className="[word-break:break-word] font-[family-name:var(--font\/family,'Roboto_Mono:Regular')] font-normal leading-[16px] relative shrink-0 text-[14px] text-[color:var(--color\/text-secondary,#cfb28c)] text-center whitespace-nowrap" data-node-id="11:1225">
+                      ABERTA
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div className="content-stretch flex items-start justify-between relative shrink-0 w-full" data-node-id="70342:2762">
+                <div className="grid-cols-[max-content] grid-rows-[max-content] inline-grid leading-[0] place-items-start relative shrink-0" data-node-id="11:1238" data-name="01">
+                  <div className="col-1 content-stretch flex items-center justify-center ml-0 mt-0 relative row-1" data-node-id="70342:2700">
+                    <div className="content-stretch flex gap-[12px] items-center relative shrink-0" data-node-id="70410:4189">
+                      <div className="bg-[var(--color\/primary,#d28a4c)] border border-[#140d0a] border-solid content-stretch drop-shadow-[0px_6.6px_9.9px_rgba(20,13,10,0.15)] flex flex-col h-[49.5px] items-center justify-center relative rounded-[33px] shrink-0 w-[33px]" data-node-id="70410:4190" data-name="Add Button">
+                        <div className="relative shrink-0 size-[26.4px]" data-node-id="70410:4191" data-name="Frame">
+                          <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgFrame} />
+                        </div>
+                      </div>
+                      <p className="[word-break:break-word] font-[family-name:var(--font\/family,'Roboto_Mono:Regular')] font-normal leading-[28px] relative shrink-0 text-[20px] text-[color:var(--color\/foreground,#f5f1eb)] whitespace-nowrap" data-node-id="70410:4200">
+                        1
+                      </p>
+                      <div className="bg-[var(--color\/primary,#d28a4c)] border border-[#140d0a] border-solid content-stretch drop-shadow-[0px_6.6px_9.9px_rgba(20,13,10,0.15)] flex flex-col h-[49.5px] items-center justify-center relative rounded-[33px] shrink-0 w-[33px]" data-node-id="70410:4194" data-name="Add Button">
+                        <div className="relative shrink-0 size-[26.4px]" data-node-id="70410:4195" data-name="Frame">
+                          <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgFrame1} />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="content-stretch flex gap-[8px] items-center relative shrink-0" data-node-id="70410:3938">
+                  <div className="bg-[var(--color\/primary,#d28a4c)] content-stretch flex h-[40px] items-center justify-center relative rounded-[6px] shrink-0 w-[130px]" data-node-id="70342:2756">
+                    <p className="[word-break:break-word] font-[family-name:var(--font\/family,'Roboto_Mono:Bold')] font-bold leading-[20px] relative shrink-0 text-[14px] text-[color:var(--color\/ink,#140d0a)] whitespace-nowrap" data-node-id="11:1240">
+                      COMPRAR
+                    </p>
+                  </div>
+                  <div className="border border-[var(--color\/primary,#d28a4c)] border-solid content-stretch flex gap-[8px] h-[40px] items-center justify-center relative rounded-[6px] shrink-0 w-[130px]" data-node-id="70342:2757">
+                    <div className="relative shrink-0 size-[20px]" data-node-id="70410:3940" data-name="heart 1">
+                      <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgHeart1} />
+                    </div>
+                    <p className="[word-break:break-word] font-[family-name:var(--font\/family,'Roboto_Mono:Medium')] font-medium leading-[20px] relative shrink-0 text-[14px] text-[color:var(--color\/text-accent,#e89b55)] whitespace-nowrap" data-node-id="11:1242">
+                      Favoritar
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div className="content-stretch flex flex-col gap-[12px] items-start relative shrink-0 w-[308px]" data-node-id="70342:2761">
+                <div className="[word-break:break-word] content-stretch flex flex-col font-[family-name:var(--font\/family,'Roboto_Mono:Regular')] font-normal gap-[12px] items-start leading-[normal] relative shrink-0 text-[15px] text-[color:var(--color\/secondary,#b39463)] w-full" data-node-id="70342:2759">
+                  <p className="relative shrink-0 w-full" data-node-id="10:291">
+                    ID do token: #0042
+                  </p>
+                  <p className="relative shrink-0 w-full" data-node-id="11:1212">
+                    Coleção: Kurio Apes
+                  </p>
+                  <p className="relative shrink-0 w-full" data-node-id="11:1226">
+                    Atributos: Óculos, Esmeralda, Raro
+                  </p>
+                </div>
+                <div className="content-stretch flex gap-[8px] items-center relative shrink-0" data-node-id="70342:2760">
+                  <p className="[word-break:break-word] font-[family-name:var(--font\/family,'Roboto_Mono:Bold')] font-bold leading-[16px] relative shrink-0 text-[15px] text-[color:var(--color\/foreground,#f5f1eb)] whitespace-nowrap" data-node-id="11:1244">
+                    Compartilhar este NFT:
+                  </p>
+                  <div className="h-[14.375px] relative shrink-0 w-[15px]" data-node-id="11:1245" data-name="Linkedin">
+                    <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgLinkedin} />
+                  </div>
+                  <Message className="relative shrink-0 size-[18px]" />
+                  <div className="h-[12.191px] relative shrink-0 w-[15.966px]" data-node-id="11:1247" data-name="Twitter">
+                    <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgTwitter} />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="content-stretch flex flex-col items-end relative shrink-0 w-full" data-node-id="70342:2780" data-name="Description">
+        <div className="content-stretch flex flex-col gap-[12px] items-start relative shrink-0 w-full" data-node-id="70342:2779">
+          <div className="content-stretch flex flex-col items-end relative shrink-0 w-full" data-node-id="70342:2778">
+            <div className="content-stretch flex flex-col gap-[12px] items-start relative shrink-0 w-full" data-node-id="70342:2777">
+              <div className="content-stretch flex flex-col items-end relative shrink-0 w-full" data-node-id="70342:2776">
+                <div className="content-stretch flex flex-col gap-[12px] items-start relative shrink-0 w-full" data-node-id="70342:2775">
+                  <div className="content-stretch flex flex-col gap-[12px] items-end relative shrink-0 w-full" data-node-id="70342:2774">
+                    <div className="content-stretch flex flex-col items-start relative shrink-0 w-full" data-node-id="70342:2773">
+                      <div className="content-stretch flex gap-[32px] items-start relative shrink-0" data-node-id="70342:2772">
+                        <div className="content-stretch flex flex-col gap-[12px] items-start relative shrink-0 w-[161px]" data-node-id="70342:2771">
+                          <p className="[word-break:break-word] font-[family-name:var(--font\/family,'Roboto_Mono:Bold')] font-bold leading-[16px] relative shrink-0 text-[17px] text-[color:var(--color\/text-accent,#e89b55)] w-full" data-node-id="10:289">
+                            Detalhes do NFT
+                          </p>
+                          <div className="h-0 relative shrink-0 w-full" data-node-id="11:1252">
+                            <div className="absolute inset-[-3px_0_0_0]">
+                              <img alt="" className="block max-w-none size-full" src={imgLine6} />
+                            </div>
+                          </div>
+                        </div>
+                        <p className="[word-break:break-word] font-[family-name:var(--font\/family,'Roboto_Mono:Regular')] font-normal leading-[16px] relative shrink-0 text-[17px] text-[color:var(--color\/foreground,#f5f1eb)] whitespace-nowrap" data-node-id="11:1253">
+                          Avaliações de colecionadores (19)
+                        </p>
+                      </div>
+                      <div className="h-0 relative shrink-0 w-full" data-node-id="11:1250">
+                        <div className="absolute inset-[-0.3px_0_0_0]">
+                          <img alt="" className="block max-w-none size-full" src={imgLine5} />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="[word-break:break-word] font-[family-name:var(--font\/family,'Roboto_Mono:Regular')] font-normal leading-[0] relative shrink-0 text-[14px] text-[color:var(--color\/text-secondary,#cfb28c)] w-full whitespace-pre-wrap" data-node-id="11:1251">
+                      <p className="leading-[24px] mb-0">Emerald Ape #042 é uma obra digital 1/50 finalizada à mão da coleção Kurio Editions. Cada atributo fica armazenado nos metadados do token e verificado na Ethereum. A obra explora identidade, movimento e luz em um mundo digital sem fronteiras.</p>
+                      <p className="leading-[24px] mb-0">​</p>
+                      <p className="leading-[24px]">A propriedade inclui a arte em alta resolução, lançamentos exclusivos para colecionadores e um registro permanente de procedência registrada na rede. Nova Sato recebe 5% de direitos autorais nas vendas secundárias, apoiando novos trabalhos e lançamentos da comunidade.</p>
+                    </div>
+                  </div>
+                  <p className="[word-break:break-word] font-[family-name:var(--font\/family,'Roboto_Mono:Bold')] font-bold leading-[24px] relative shrink-0 text-[14px] text-[color:var(--color\/foreground,#f5f1eb)] w-full" data-node-id="11:1258">
+                    Rede:
+                  </p>
+                </div>
+                <p className="[word-break:break-word] font-[family-name:var(--font\/family,'Roboto_Mono:Regular')] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--color\/text-secondary,#cfb28c)] w-full" data-node-id="11:1259">
+                  Cunhado na Ethereum com procedência imutável e metadados armazenados no IPFS.
+                </p>
+              </div>
+              <p className="[word-break:break-word] font-[family-name:var(--font\/family,'Roboto_Mono:Bold')] font-bold leading-[24px] relative shrink-0 text-[14px] text-[color:var(--color\/foreground,#f5f1eb)] w-full" data-node-id="11:1260">
+                Contrato:
+              </p>
+            </div>
+            <p className="[word-break:break-word] font-[family-name:var(--font\/family,'Roboto_Mono:Regular')] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--color\/text-secondary,#cfb28c)] w-full" data-node-id="11:1261">
+              Direitos autorais do criador: 5% nas vendas secundárias, pagos automaticamente pelos mercados compatíveis.
+            </p>
+          </div>
+          <p className="[word-break:break-word] font-[family-name:var(--font\/family,'Roboto_Mono:Bold')] font-bold leading-[24px] relative shrink-0 text-[14px] text-[color:var(--color\/foreground,#f5f1eb)] w-full" data-node-id="11:1262">
+            Direitos autorais:
+          </p>
+        </div>
+        <p className="[word-break:break-word] font-[family-name:var(--font\/family,'Roboto_Mono:Regular')] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--color\/text-secondary,#cfb28c)] w-full" data-node-id="11:1263">
+          0x7A42...19E8 • Contrato inteligente ERC-721 verificado.
+        </p>
+      </div>
+      <div className="content-stretch flex flex-col gap-[32px] items-start overflow-clip relative shrink-0 w-full" data-node-id="70364:239" data-name="Related Products">
+        <div className="content-stretch flex flex-col gap-[12px] items-start relative shrink-0 w-[1200px]" data-node-id="70342:2782" data-name="Section Heading">
+          <p className="[word-break:break-word] font-[family-name:var(--font\/family,'Roboto_Mono:Bold')] font-bold leading-[16px] relative shrink-0 text-[17px] text-[color:var(--color\/text-accent,#e89b55)] w-full" data-node-id="11:1256">
+            Mais desta coleção
+          </p>
+          <div className="h-0 relative shrink-0 w-full" data-node-id="11:1254">
+            <div className="absolute inset-[-0.3px_0_0_0]">
+              <img alt="" className="block max-w-none size-full" src={imgLine5} />
+            </div>
+          </div>
+        </div>
+        <div className="content-stretch flex flex-col gap-[32px] items-center relative shrink-0 w-[1200px]" data-node-id="70342:2800">
+          <div className="content-stretch flex items-center justify-between relative shrink-0 w-full" data-node-id="70342:2799">
+            <div className="content-stretch flex flex-col gap-[12px] items-start relative shrink-0 w-[219px]" data-node-id="70342:2798">
+              <div className="grid-cols-[max-content] grid-rows-[max-content] inline-grid leading-[0] place-items-start relative shrink-0" data-node-id="11:1264">
+                <div className="bg-[var(--color\/surface-card,#241612)] col-1 content-stretch flex h-[255px] items-start ml-0 mt-0 pb-[8px] pl-[20px] pr-[12px] pt-[4px] relative row-1 w-[219px]" data-node-id="70342:2789">
+                  <div className="h-[243px] relative rounded-[11px] shrink-0 w-[190px]" data-node-id="11:1177" data-name="NFT Collection Artwork 06">
+                    <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none rounded-[11px] size-full" src={imgNftCollectionArtwork06} />
+                  </div>
+                </div>
+              </div>
+              <div className="[word-break:break-word] content-stretch flex flex-col items-start relative shrink-0 w-[154px]" data-node-id="70342:2783">
+                <p className="font-[family-name:var(--font\/family,'Roboto_Mono:Regular')] font-normal leading-[normal] relative shrink-0 text-[15px] text-[color:var(--color\/foreground,#f5f1eb)] w-full" data-node-id="11:1133">
+                  Cosmic Bloom #118
+                </p>
+                <p className="font-[family-name:var(--font\/family,'Roboto_Mono:Bold')] font-bold leading-[16px] relative shrink-0 text-[16px] text-[color:var(--color\/text-accent,#e89b55)] w-full" data-node-id="11:1142">
+                  1.29 ETH
+                </p>
+              </div>
+            </div>
+            <div className="content-stretch flex flex-col gap-[12px] items-start relative shrink-0 w-[220px]" data-node-id="70342:2797">
+              <div className="grid-cols-[max-content] grid-rows-[max-content] inline-grid leading-[0] place-items-start relative shrink-0" data-node-id="11:1265">
+                <div className="bg-[var(--color\/surface-card,#241612)] col-1 content-stretch flex h-[255px] items-start ml-0 mt-0 pb-[24px] pt-[20px] px-[4px] relative row-1 w-[220px]" data-node-id="70342:2790">
+                  <div className="relative rounded-[13px] shrink-0 size-[212px]" data-node-id="11:1178" data-name="NFT Collection Artwork 07">
+                    <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none rounded-[13px] size-full" src={imgNftCollectionArtwork06} />
+                  </div>
+                </div>
+              </div>
+              <div className="[word-break:break-word] content-stretch flex flex-col items-start relative shrink-0 w-[154px]" data-node-id="70342:2785">
+                <p className="font-[family-name:var(--font\/family,'Roboto_Mono:Regular')] font-normal leading-[normal] relative shrink-0 text-[15px] text-[color:var(--color\/foreground,#f5f1eb)] w-full" data-node-id="11:1136">
+                  Violet Nomad #314
+                </p>
+                <p className="font-[family-name:var(--font\/family,'Roboto_Mono:Bold')] font-bold leading-[16px] relative shrink-0 text-[16px] text-[color:var(--color\/text-accent,#e89b55)] w-full" data-node-id="11:1145">
+                  1.39 ETH
+                </p>
+              </div>
+            </div>
+            <div className="content-stretch flex flex-col gap-[12px] items-start relative shrink-0 w-[219px]" data-node-id="70342:2796">
+              <div className="grid-cols-[max-content] grid-rows-[max-content] inline-grid leading-[0] place-items-start relative shrink-0" data-node-id="11:1266">
+                <div className="bg-[var(--color\/surface-card,#241612)] col-1 content-stretch flex h-[255px] items-start ml-0 mt-0 pb-[24px] pt-[20px] px-[4px] relative row-1 w-[219px]" data-node-id="70342:2791">
+                  <div className="relative rounded-[13px] shrink-0 size-[212px]" data-node-id="11:1179" data-name="NFT Collection Artwork 08">
+                    <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none rounded-[13px] size-full" src={imgNftCollectionArtwork08} />
+                  </div>
+                </div>
+              </div>
+              <div className="[word-break:break-word] content-stretch flex flex-col items-start relative shrink-0 w-[145px]" data-node-id="70342:2786">
+                <p className="font-[family-name:var(--font\/family,'Roboto_Mono:Regular')] font-normal leading-[normal] relative shrink-0 text-[15px] text-[color:var(--color\/foreground,#f5f1eb)] w-full" data-node-id="11:1139">
+                  Ivory Baron #088
+                </p>
+                <p className="font-[family-name:var(--font\/family,'Roboto_Mono:Bold')] font-bold leading-[16px] relative shrink-0 text-[16px] text-[color:var(--color\/text-accent,#e89b55)] w-full" data-node-id="11:1148">
+                  1.79 ETH
+                </p>
+              </div>
+            </div>
+            <div className="content-stretch flex flex-col gap-[12px] items-start relative shrink-0 w-[219px]" data-node-id="70342:2795">
+              <div className="grid-cols-[max-content] grid-rows-[max-content] inline-grid leading-[0] place-items-start relative shrink-0" data-node-id="11:1267">
+                <div className="bg-[var(--color\/surface-card,#241612)] col-1 content-stretch flex h-[255px] items-start ml-0 mt-0 pb-[28px] pt-[16px] px-[4px] relative row-1 w-[219px]" data-node-id="70342:2792">
+                  <div className="relative rounded-[13px] shrink-0 size-[213px]" data-node-id="11:1180" data-name="NFT Collection Artwork 09">
+                    <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none rounded-[13px] size-full" src={imgNftCollectionArtwork09} />
+                  </div>
+                </div>
+              </div>
+              <div className="[word-break:break-word] content-stretch flex flex-col items-start relative shrink-0 w-[145px]" data-node-id="70342:2787">
+                <p className="font-[family-name:var(--font\/family,'Roboto_Mono:Regular')] font-normal leading-[normal] relative shrink-0 text-[15px] text-[color:var(--color\/foreground,#f5f1eb)] w-full" data-node-id="11:1134">
+                  Golden Beat #207
+                </p>
+                <p className="font-[family-name:var(--font\/family,'Roboto_Mono:Bold')] font-bold leading-[16px] relative shrink-0 text-[16px] text-[color:var(--color\/text-accent,#e89b55)] w-full" data-node-id="11:1143">
+                  0.99 ETH
+                </p>
+              </div>
+            </div>
+            <div className="grid-cols-[max-content] grid-rows-[max-content] inline-grid leading-[0] place-items-start relative shrink-0" data-node-id="11:1268">
+              <div className="col-1 content-stretch flex flex-col gap-[12px] items-start ml-0 mt-0 relative row-1 w-[219px]" data-node-id="70342:2794">
+                <div className="bg-[var(--color\/surface-card,#241612)] content-stretch flex h-[255px] items-start pb-[28px] pt-[16px] px-[4px] relative shrink-0 w-full" data-node-id="70342:2793">
+                  <div className="relative rounded-[13px] shrink-0 size-[213px]" data-node-id="11:1182" data-name="NFT Collection Artwork 10">
+                    <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none rounded-[13px] size-full" src={imgNftCollectionArtwork09} />
+                  </div>
+                </div>
+                <div className="[word-break:break-word] content-stretch flex flex-col items-start relative shrink-0 w-[163px]" data-node-id="70342:2788">
+                  <p className="font-[family-name:var(--font\/family,'Roboto_Mono:Regular')] font-normal leading-[normal] relative shrink-0 text-[15px] text-[color:var(--color\/foreground,#f5f1eb)] w-full" data-node-id="11:1140">
+                    Golden Signal #160
+                  </p>
+                  <p className="font-[family-name:var(--font\/family,'Roboto_Mono:Bold')] font-bold leading-[16px] relative shrink-0 text-[16px] text-[color:var(--color\/text-accent,#e89b55)] w-full" data-node-id="11:1149">
+                    0.39 ETH
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="h-[12px] relative shrink-0 w-[52px]" data-node-id="70364:240" data-name="Carousel Dots">
+            <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgCarouselDots} />
+          </div>
+        </div>
+      </div>
+      <div className="content-stretch flex flex-col items-start relative shrink-0 w-full" data-node-id="70493:1151" data-name="Footer">
+        <div className="bg-[var(--color\/surface-card,#241612)] content-stretch flex flex-col h-[250px] items-start p-[32px] relative shrink-0 w-full" data-node-id="I70493:1151;70491:697">
+          <div className="content-stretch flex items-end justify-between relative shrink-0 w-[1154px]" data-node-id="I70493:1151;70491:698">
+            <div className="content-stretch flex flex-[1_0_0] flex-col items-start min-w-px px-[16px] relative" data-node-id="I70493:1151;70491:699">
+              <div className="content-stretch flex flex-col gap-[12px] items-start relative shrink-0 w-full" data-node-id="I70493:1151;70491:794">
+                <div className="bg-[var(--color\/primary,#d28a4c)] content-stretch flex flex-col items-center justify-center relative rounded-[37px] shrink-0 size-[74px]" data-node-id="I70493:1151;70491:795">
+                  <div className="[word-break:break-word] flex flex-col font-[family-name:var(--font\/family,'Roboto_Mono:Bold')] font-bold justify-center leading-[0] relative shrink-0 text-[24px] text-[color:var(--color\/ink,#140d0a)] text-center whitespace-nowrap" data-node-id="I70493:1151;70491:796">
+                    <p className="leading-[normal]">W</p>
+                  </div>
+                </div>
+                <p className="[word-break:break-word] font-[family-name:var(--font\/family,'Roboto_Mono:Bold')] font-bold leading-[16px] min-w-full relative shrink-0 text-[17px] text-[color:var(--color\/foreground,#f5f1eb)] w-[min-content]" data-node-id="I70493:1151;70491:797">
+                  Segurança da carteira
+                </p>
+                <p className="[word-break:break-word] font-[family-name:var(--font\/family,'Roboto_Mono:Regular')] font-normal leading-[22px] relative shrink-0 text-[14px] text-[color:var(--color\/text-secondary,#cfb28c)] w-[204px]" data-node-id="I70493:1151;70491:798">
+                  Proteja sua carteira e colecione arte digital verificada com confiança.
+                </p>
+              </div>
+            </div>
+            <div className="flex flex-row items-end self-stretch" data-node-id="I70493:1151;70491:841">
+              <div className="flex h-full items-center justify-center relative shrink-0 w-px" style={{ containerType: "size" }}>
+                <div className="-rotate-90 flex-none w-[100cqh]">
+                  <div className="bg-[var(--color\/primary,#d28a4c)] h-px relative w-full" />
+                </div>
+              </div>
+            </div>
+            <div className="content-stretch flex flex-col items-start justify-center px-[16px] relative shrink-0 w-[264.667px]" data-node-id="I70493:1151;70491:842">
+              <div className="content-stretch flex flex-col gap-[12px] items-start relative shrink-0 w-full" data-node-id="I70493:1151;70491:843">
+                <div className="bg-[var(--color\/primary,#d28a4c)] content-stretch flex flex-col items-center justify-center relative rounded-[37px] shrink-0 size-[74px]" data-node-id="I70493:1151;70491:844">
+                  <p className="[word-break:break-word] font-[family-name:var(--font\/family,'Roboto_Mono:Bold')] font-bold leading-[normal] relative shrink-0 text-[24px] text-[color:var(--color\/ink,#140d0a)] whitespace-nowrap" data-node-id="I70493:1151;70491:845">
+                    C
+                  </p>
+                </div>
+                <p className="[word-break:break-word] font-[family-name:var(--font\/family,'Roboto_Mono:Bold')] font-bold leading-[16px] min-w-full relative shrink-0 text-[17px] text-[color:var(--color\/foreground,#f5f1eb)] w-[min-content]" data-node-id="I70493:1151;70491:846">
+                  Criadores em destaque
+                </p>
+                <p className="[word-break:break-word] font-[family-name:var(--font\/family,'Roboto_Mono:Regular')] font-normal leading-[22px] relative shrink-0 text-[14px] text-[color:var(--color\/text-secondary,#cfb28c)] w-[204px]" data-node-id="I70493:1151;70491:847">
+                  Conheça artistas, estúdios e comunidades que moldam a cultura digital na rede.
+                </p>
+              </div>
+            </div>
+            <div className="flex flex-row items-end self-stretch" data-node-id="I70493:1151;70491:959">
+              <div className="flex h-full items-center justify-center relative shrink-0 w-px" style={{ containerType: "size" }}>
+                <div className="-rotate-90 flex-none w-[100cqh]">
+                  <div className="bg-[var(--color\/primary,#d28a4c)] h-px relative w-full" />
+                </div>
+              </div>
+            </div>
+            <div className="content-stretch flex flex-col items-start px-[16px] relative shrink-0 w-[264.667px]" data-node-id="I70493:1151;70491:960">
+              <div className="content-stretch flex flex-col gap-[12px] items-start relative shrink-0 w-full" data-node-id="I70493:1151;70491:961">
+                <div className="bg-[var(--color\/primary,#d28a4c)] content-stretch flex flex-col items-center justify-center relative rounded-[37px] shrink-0 size-[74px]" data-node-id="I70493:1151;70491:962">
+                  <p className="[word-break:break-word] font-[family-name:var(--font\/family,'Roboto_Mono:Bold')] font-bold leading-[normal] relative shrink-0 text-[24px] text-[color:var(--color\/ink,#140d0a)] whitespace-nowrap" data-node-id="I70493:1151;70491:963">
+                    D
+                  </p>
+                </div>
+                <p className="[word-break:break-word] font-[family-name:var(--font\/family,'Roboto_Mono:Bold')] font-bold leading-[16px] min-w-full relative shrink-0 text-[17px] text-[color:var(--color\/foreground,#f5f1eb)] w-[min-content]" data-node-id="I70493:1151;70491:964">
+                  Alertas de lançamentos
+                </p>
+                <p className="[word-break:break-word] font-[family-name:var(--font\/family,'Roboto_Mono:Regular')] font-normal leading-[22px] relative shrink-0 text-[14px] text-[color:var(--color\/text-secondary,#cfb28c)] w-[204px]" data-node-id="I70493:1151;70491:965">
+                  Receba calendários de cunhagem, novidades de listas de acesso e análises do mercado.
+                </p>
+              </div>
+            </div>
+            <div className="flex flex-row items-end self-stretch" data-node-id="I70493:1151;70491:1232">
+              <div className="flex h-full items-center justify-center relative shrink-0 w-px" style={{ containerType: "size" }}>
+                <div className="-rotate-90 flex-none w-[100cqh]">
+                  <div className="bg-[var(--color\/primary,#d28a4c)] h-px relative w-full" />
+                </div>
+              </div>
+            </div>
+            <div className="flex flex-row items-end self-stretch" data-node-id="I70493:1151;70491:1233">
+              <div className="content-stretch flex flex-col gap-[12px] h-full items-center px-[16px] relative shrink-0 w-[357px]">
+                <div className="content-stretch flex flex-col gap-[16px] items-start relative shrink-0 w-full" data-node-id="I70493:1151;70491:1234">
+                  <p className="[word-break:break-word] font-[family-name:var(--font\/family,'Roboto_Mono:Bold')] font-bold leading-[16px] relative shrink-0 text-[18px] text-[color:var(--color\/foreground,#f5f1eb)] w-full" data-node-id="I70493:1151;70491:1235">
+                    Antecipe-se ao próximo lançamento
+                  </p>
+                  <div className="content-stretch flex flex-col items-end relative shrink-0 w-full" data-node-id="I70493:1151;70491:1236">
+                    <div className="bg-[var(--color\/surface-dark,#38220f)] content-stretch drop-shadow-[0px_0px_10px_rgba(10,6,4,0.45)] flex h-[40px] items-center justify-between pl-[12px] py-[12px] relative rounded-[6px] shrink-0 w-full" data-node-id="I70493:1151;70491:1237">
+                      <p className="[word-break:break-word] font-[family-name:var(--font\/family,'Roboto_Mono:Regular')] font-normal leading-[16px] relative shrink-0 text-[14px] text-[color:var(--color\/secondary,#b39463)] whitespace-nowrap" data-node-id="I70493:1151;70491:1238">
+                        digite seu e-mail...
+                      </p>
+                      <div className="bg-[var(--color\/primary,#d28a4c)] content-stretch flex h-[40px] items-center justify-center pl-[16px] pr-[4px] py-[12px] relative rounded-br-[6px] rounded-tr-[6px] shrink-0 w-[85px]" data-node-id="I70493:1151;70491:1239">
+                        <p className="[word-break:break-word] font-[family-name:var(--font\/family,'Roboto_Mono:Bold')] font-bold leading-[16px] relative shrink-0 text-[18px] text-[color:var(--color\/ink,#140d0a)] whitespace-nowrap" data-node-id="I70493:1151;70491:1240">
+                          Enviar
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <p className="[word-break:break-word] font-[family-name:var(--font\/family,'Roboto_Mono:Regular')] font-normal h-[89px] leading-[22px] relative shrink-0 text-[13px] text-[color:var(--color\/text-secondary,#cfb28c)] w-full" data-node-id="I70493:1151;70491:1241">
+                  Receba lançamentos selecionados, histórias de criadores e novidades do mercado.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="content-stretch flex flex-col items-start relative shrink-0 w-full" data-node-id="I70493:1151;70491:1242">
+          <div className="bg-[var(--color\/surface-dark,#38220f)] content-stretch flex flex-col h-[88px] items-start justify-center p-[32px] relative shrink-0 w-full" data-node-id="I70493:1151;70491:1243">
+            <div className="content-stretch flex flex-[1_0_0] gap-[92px] items-center min-h-px relative w-full" data-node-id="I70493:1151;70491:1244">
+              <div className="content-stretch flex flex-[1_0_0] items-center min-w-px overflow-clip py-[8px] relative" data-node-id="I70493:1151;70491:1245" data-name="Logo">
+                <p className="[word-break:break-word] font-[family-name:var(--font\/family,'Roboto_Mono:Bold')] font-bold leading-[normal] relative shrink-0 text-[14px] text-[color:var(--color\/foreground,#f5f1eb)] tracking-[1.4px] whitespace-nowrap" data-node-id="I70493:1151;70491:1246">
+                  KURIO
+                </p>
+              </div>
+              <div className="content-stretch flex flex-[1_0_0] h-full items-center min-w-px relative" data-node-id="I70493:1151;70491:1247">
+                <div className="[word-break:break-word] font-[family-name:var(--font\/family,'Roboto_Mono:Regular')] font-normal leading-[0] relative shrink-0 text-[14px] text-[color:var(--color\/foreground,#f5f1eb)] whitespace-nowrap" data-node-id="I70493:1151;70491:1248">
+                  <p className="leading-[22px] mb-0">Feito para colecionadores,</p>
+                  <p className="leading-[22px]">criadores e cultura</p>
+                </div>
+              </div>
+              <div className="content-stretch flex flex-[1_0_0] items-center min-w-px relative" data-node-id="I70493:1151;70491:1249">
+                <a className="[word-break:break-word] block font-[family-name:var(--font\/family,'Roboto_Mono:Regular')] font-normal leading-[0] relative shrink-0 text-[0px] text-[color:var(--color\/foreground,#f5f1eb)] whitespace-nowrap" href="mailto:contact@besa.com" data-node-id="I70493:1151;70491:1250" target="_blank">
+                  <p className="cursor-pointer font-['Roboto_Mono:Regular'] leading-[22px] text-[14px]" role="link" tabIndex="0">
+                    contato@email.com
+                  </p>
+                </a>
+              </div>
+              <div className="content-stretch flex items-center relative shrink-0 w-[228px]" data-node-id="I70493:1151;70491:1251">
+                <p className="[word-break:break-word] font-[family-name:var(--font\/family,'Roboto_Mono:Regular')] font-normal leading-[22px] relative shrink-0 text-[14px] text-[color:var(--color\/foreground,#f5f1eb)] whitespace-nowrap" data-node-id="I70493:1151;70491:1252">
+                  +55 11 4002 8922
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="content-stretch flex flex-col gap-[6px] items-center relative shrink-0 w-full" data-node-id="I70493:1151;70491:1253">
+            <div className="bg-[var(--color\/surface-card,#241612)] content-stretch flex flex-col h-[236px] items-start p-[32px] relative shrink-0 w-full" data-node-id="I70493:1151;70491:1254">
+              <div className="content-stretch flex gap-[124px] items-start relative shrink-0 w-full" data-node-id="I70493:1151;70491:1255">
+                <div className="[word-break:break-word] content-stretch flex flex-[1_0_0] flex-col gap-[8px] items-start min-w-px relative text-[color:var(--color\/foreground,#f5f1eb)]" data-node-id="I70493:1151;70491:1256">
+                  <p className="font-[family-name:var(--font\/family,'Roboto_Mono:Bold')] font-bold leading-[16px] relative shrink-0 text-[18px] w-full" data-node-id="I70493:1151;70491:1257">
+                    Meu perfil
+                  </p>
+                  <div className="font-[family-name:var(--font\/family,'Roboto_Mono:Regular')] font-normal leading-[0] relative shrink-0 text-[14px] w-full" data-node-id="I70493:1151;70491:1258">
+                    <p className="leading-[30px] mb-0">Meu perfil</p>
+                    <p className="leading-[30px] mb-0">Minha coleção</p>
+                    <p className="leading-[30px] mb-0">Atividade</p>
+                    <p className="leading-[30px] mb-0">Estúdio do criador</p>
+                    <p className="leading-[30px]">Lista de interesse</p>
+                  </div>
+                </div>
+                <div className="[word-break:break-word] content-stretch flex flex-[1_0_0] flex-col gap-[8px] items-start min-w-px relative text-[color:var(--color\/foreground,#f5f1eb)]" data-node-id="I70493:1151;70491:1259">
+                  <p className="font-[family-name:var(--font\/family,'Roboto_Mono:Bold')] font-bold leading-[16px] relative shrink-0 text-[18px] w-full" data-node-id="I70493:1151;70491:1260">
+                    Central de ajuda
+                  </p>
+                  <div className="font-[family-name:var(--font\/family,'Roboto_Mono:Regular')] font-normal leading-[0] relative shrink-0 text-[14px] w-full" data-node-id="I70493:1151;70491:1261">
+                    <p className="leading-[30px] mb-0">Central de ajuda</p>
+                    <p className="leading-[30px] mb-0">Como comprar NFTs</p>
+                    <p className="leading-[30px] mb-0">Carteira e segurança</p>
+                    <p className="leading-[30px] mb-0">Política do mercado</p>
+                    <p className="leading-[30px]">Denunciar item</p>
+                  </div>
+                </div>
+                <div className="[word-break:break-word] content-stretch flex flex-[1_0_0] flex-col gap-[8px] items-start min-w-px relative text-[color:var(--color\/foreground,#f5f1eb)]" data-node-id="I70493:1151;70491:1262">
+                  <p className="font-[family-name:var(--font\/family,'Roboto_Mono:Bold')] font-bold leading-[16px] relative shrink-0 text-[18px] w-full" data-node-id="I70493:1151;70491:1263">
+                    Coleções
+                  </p>
+                  <div className="font-[family-name:var(--font\/family,'Roboto_Mono:Regular')] font-normal leading-[0] relative shrink-0 text-[14px] w-full" data-node-id="I70493:1151;70491:1264">
+                    <p className="leading-[30px] mb-0">Arte digital</p>
+                    <p className="leading-[30px] mb-0">Fotografia</p>
+                    <p className="leading-[30px] mb-0">Música</p>
+                    <p className="leading-[30px] mb-0">Arte 3D</p>
+                    <p className="leading-[30px]">Utilidade</p>
+                  </div>
+                </div>
+                <div className="content-stretch flex flex-col gap-[32px] items-start relative shrink-0 w-[228px]" data-node-id="I70493:1151;70491:1265">
+                  <div className="content-stretch flex flex-col gap-[20px] items-start relative shrink-0 w-[190px]" data-node-id="I70493:1151;70491:1266">
+                    <p className="[word-break:break-word] font-[family-name:var(--font\/family,'Roboto_Mono:Bold')] font-bold leading-[16px] relative shrink-0 text-[18px] text-[color:var(--color\/foreground,#f5f1eb)] w-full" data-node-id="I70493:1151;70491:1267">
+                      Redes sociais
+                    </p>
+                    <div className="content-stretch flex gap-[10px] items-center relative shrink-0 w-full" data-node-id="I70493:1151;70491:1268">
+                      <div className="relative shrink-0 size-[30px]" data-node-id="I70493:1151;70491:1269">
+                        <div className="absolute inset-[-3.33%]">
+                          <img alt="" className="block max-w-none size-full" src={imgFrame108} />
+                        </div>
+                      </div>
+                      <div className="relative shrink-0 size-[30px]" data-node-id="I70493:1151;70491:1271">
+                        <div className="absolute inset-[-3.33%]">
+                          <img alt="" className="block max-w-none size-full" src={imgFrame109} />
+                        </div>
+                      </div>
+                      <div className="relative shrink-0 size-[30px]" data-node-id="I70493:1151;70491:1273">
+                        <div className="absolute inset-[-3.33%]">
+                          <img alt="" className="block max-w-none size-full" src={imgFrame110} />
+                        </div>
+                      </div>
+                      <div className="relative shrink-0 size-[30px]" data-node-id="I70493:1151;70491:1275">
+                        <div className="absolute inset-[-3.33%]">
+                          <img alt="" className="block max-w-none size-full" src={imgFrame111} />
+                        </div>
+                      </div>
+                      <div className="relative shrink-0 size-[30px]" data-node-id="I70493:1151;70491:1277">
+                        <div className="absolute inset-[-3.33%]">
+                          <img alt="" className="block max-w-none size-full" src={imgFrame112} />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="content-stretch flex flex-col gap-[12px] items-start relative shrink-0 w-full" data-node-id="I70493:1151;70491:1281">
+                    <p className="[word-break:break-word] font-[family-name:var(--font\/family,'Roboto_Mono:Bold')] font-bold leading-[16px] relative shrink-0 text-[18px] text-[color:var(--color\/foreground,#f5f1eb)] w-full" data-node-id="I70493:1151;70491:1282">
+                      Carteiras compatíveis
+                    </p>
+                    <div className="bg-[var(--color\/surface-dark,#38220f)] border border-[var(--color\/border-soft,#55321f)] border-solid content-stretch flex h-[26px] items-center justify-center pl-[8px] py-[8px] relative rounded-[6px] shrink-0 w-full" data-node-id="I70493:1151;70491:1283">
+                      <p className="[word-break:break-word] font-[family-name:var(--font\/family,'Roboto_Mono:Bold')] font-bold leading-[normal] relative shrink-0 text-[9px] text-[color:var(--color\/text-accent,#e89b55)] tracking-[0.1px] whitespace-pre" data-node-id="I70493:1151;70491:1284">{`METAMASK  •  WALLETCONNECT  •  COINBASE`}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <p className="[word-break:break-word] font-[family-name:var(--font\/family,'Roboto_Mono:Regular')] font-normal leading-[30px] relative shrink-0 text-[14px] text-[color:var(--color\/foreground,#f5f1eb)] text-center w-full" data-node-id="I70493:1151;70491:1285">
+              © 2026 Kurio. Propriedade digital para todos.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+SUPER CRITICAL: The generated React+Tailwind code MUST be converted to match the target project's technology stack and styling system.
+1. Analyze the target codebase to identify: technology stack, styling approach, component patterns, and design tokens
+2. Convert React syntax to the target framework/library
+3. Transform all Tailwind classes to the target styling system while preserving exact visual design
+4. Follow the project's existing patterns and conventions
+DO NOT install any Tailwind as a dependency unless the user instructs you to do so.
+
+Node ids have been added to the code as data attributes, e.g. `data-node-id="1:2"`.
+These styles are contained in the design: Color/Foreground: #F5F1EB, Body/14 Bold · lh auto: Font(family: "font/family", style: Bold, size: 14, weight: 700, lineHeight: 100, letterSpacing: 10), Body Large/16 Regular · lh auto: Font(family: "font/family", style: Regular, size: 16, weight: 400, lineHeight: 100, letterSpacing: 0), Text/Accent: #E89B55, Body Large/16 Bold · lh auto: Font(family: "font/family", style: Bold, size: 16, weight: 700, lineHeight: 100, letterSpacing: 0), Color/Primary: #D28A4C, Color/Ink: #140D0A, Tiny/10 Medium: Font(family: "font/family", style: Medium, size: 10, weight: 500, lineHeight: 100, letterSpacing: 0), Body Large/16 Medium · lh auto: Font(family: "font/family", style: Medium, size: 16, weight: 500, lineHeight: 100, letterSpacing: 0), Body/15 Bold · lh 16: Font(family: "font/family", style: Bold, size: 15, weight: 700, lineHeight: 16, letterSpacing: 0), Color/Surface Card: #241612, Color/Surface Raised: #2F1D15, Color/Border: #3F2319, Heading/28 Bold: Font(family: "font/family", style: Bold, size: 28, weight: 700, lineHeight: 100, letterSpacing: 0), Title/22 Bold: Font(family: "font/family", style: Bold, size: 22, weight: 700, lineHeight: 16, letterSpacing: 0), Text/Secondary: #CFB28C, Body/15 Regular · lh 16: Font(family: "font/family", style: Regular, size: 15, weight: 400, lineHeight: 100, letterSpacing: 0), Body/14 Regular · lh 24: Font(family: "font/family", style: Regular, size: 14, weight: 400, lineHeight: 24, letterSpacing: 0), Body/14 Regular · lh 16: Font(family: "font/family", style: Regular, size: 14, weight: 400, lineHeight: 16, letterSpacing: 0), Body/14 Medium · lh 16 · ls 0%: Font(family: "font/family", style: Medium, size: 14, weight: 500, lineHeight: 16, letterSpacing: 0), Color/Black: #000000, Title/20 Regular · lh 10: Font(family: "font/family", style: Regular, size: 20, weight: 400, lineHeight: 28, letterSpacing: 0), Body/14 Bold · lh 20: Font(family: "font/family", style: Bold, size: 14, weight: 700, lineHeight: 20, letterSpacing: 0), Body/14 Medium · lh 20: Font(family: "font/family", style: Medium, size: 14, weight: 500, lineHeight: 20, letterSpacing: 0), Color/Secondary: #B39463, Body Large/17 Bold: Font(family: "font/family", style: Bold, size: 17, weight: 700, lineHeight: 16, letterSpacing: 0), Body Large/17 Regular · lh 16: Font(family: "font/family", style: Regular, size: 17, weight: 400, lineHeight: 16, letterSpacing: 0), Body/14 Bold · lh 24: Font(family: "font/family", style: Bold, size: 14, weight: 700, lineHeight: 24, letterSpacing: 0), Body Large/16 Bold · lh 16: Font(family: "font/family", style: Bold, size: 16, weight: 700, lineHeight: 16, letterSpacing: 0), Heading/24 Bold: Font(family: "font/family", style: Bold, size: 24, weight: 700, lineHeight: 100, letterSpacing: 0), Body/14 Regular · lh 22: Font(family: "font/family", style: Regular, size: 14, weight: 400, lineHeight: 22, letterSpacing: 0), Body Large/18 Bold · lh 16: Font(family: "font/family", style: Bold, size: 18, weight: 700, lineHeight: 16, letterSpacing: 0), Color/Surface Dark: #38220F, Caption/13 Regular · lh 22: Font(family: "font/family", style: Regular, size: 13, weight: 400, lineHeight: 22, letterSpacing: 0), Body/14 Regular · lh 30: Font(family: "font/family", style: Regular, size: 14, weight: 400, lineHeight: 30, letterSpacing: 0), Tiny/9 Bold: Font(family: "font/family", style: Bold, size: 9, weight: 700, lineHeight: 100, letterSpacing: 0.10000000149011612), Color/Border Soft: #55321F.
+Component descriptions: The following components have usage descriptions or documentation links defined in Figma. These descriptions provide important context about the intended usage, best practices, and any constraints for each component. Follow these guidelines when implementing or using these components.
+
+## Header Row
+**Node ID:** 70486:560
+
+Desktop header row, 1200 wide: KURIO wordmark, 4-item nav with one active item, search, cart with count badge, and the sign-in button. Set Active to match the screen (Home on Início/Entrar/Criar conta/Perfil do colecionador/Carteiras, Market on the four Mercado-flow screens). Badge Count is the cart item count. Drop at index 0 of the screen Top or Header frame with FILL width and HUG height. The hairline rule under the header belongs to the host Header frame, not to this component.
+
+## Footer
+**Node ID:** 70491:1286
+
+Desktop footer, 1200 wide: three feature medallions with a newsletter signup, the brand band with contact details, and four link columns with social and wallet chips. Drop as the last child of the screen with FILL width and HUG height. On screens with a modal scrim the footer must stay BELOW the scrim in paint order. Content is identical on every screen; no per-instance overrides expected.
+The generated code contains image and SVG URL constants, e.g. const image = `${assetPathPrefix}/<asset file name>`, where assetPathPrefix is declared once at the top of the code and every asset URL interpolates it. These URLs are temporary download sources and expire after 7 days. Download each asset into the project with curl -L, then replace its URL in the generated code with a reference to the downloaded asset. Never use the temporary URLs as runtime image sources.
