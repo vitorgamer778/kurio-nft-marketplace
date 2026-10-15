@@ -2,6 +2,8 @@
   "base": "https://kurio-nft-marketplace-kappa.vercel.app",
   "status": "passed",
   "checks": [
+    "Figma Google/Facebook assets decoded on login and registration",
+    "social notice Escape preserves authentication and restores focus",
     "public unauthenticated deep route",
     "real local assets",
     "Socket.IO mock connection",
@@ -12,6 +14,6 @@
     "purchased cart quantities removed",
     "mobile 390 without horizontal overflow"
   ],
-  "receipt": "https://kurio-nft-marketplace-kappa.vercel.app/order/593e099d-752f-4520-9c1a-58b1a01c936a",
+  "receipt": "https://kurio-nft-marketplace-kappa.vercel.app/order/af24391e-e42f-479f-839a-ae1d6760e069",
   "pageErrors": []
 }
