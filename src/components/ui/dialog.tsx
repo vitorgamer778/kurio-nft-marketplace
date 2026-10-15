@@ -7,12 +7,14 @@ export function Dialog({
   title,
   children,
   className = "",
+  onEscapeKeyDown,
 }: {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   title: string;
   children: ReactNode;
   className?: string;
+  onEscapeKeyDown?: (event: KeyboardEvent) => void;
 }) {
   const previousFocus = useRef<HTMLElement | null>(null);
   return (
@@ -22,6 +24,7 @@ export function Dialog({
         <DialogPrimitive.Content
           className={"dialog-content " + className}
           aria-describedby={undefined}
+          onEscapeKeyDown={onEscapeKeyDown}
           onOpenAutoFocus={() => {
             previousFocus.current = document.activeElement as HTMLElement;
           }}

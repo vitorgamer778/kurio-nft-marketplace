@@ -571,3 +571,34 @@ test("tablet 768 mantém telas operáveis e sem overflow", async ({ page }) => {
     ).toBeTruthy();
   }
 });
+
+test("login e cadastro preservam ícones do Figma e explicam o acesso social", async ({
+  page,
+}) => {
+  for (const path of ["/login", "/register"]) {
+    await page.goto(path);
+    const social = page.locator(".social-auth");
+    await expect(social).toBeVisible();
+    await page.evaluate(() => document.fonts.ready);
+    await social.locator("img").evaluateAll(async (images) => {
+      await Promise.all(
+        images.map((image) => (image as HTMLImageElement).decode()),
+      );
+    });
+    await expect(social).toHaveScreenshot(path.slice(1) + "-social.png");
+    for (const provider of ["Google", "Facebook"]) {
+      await page
+        .getByRole("button", { name: "Continuar com " + provider })
+        .click();
+      const notice = page.getByRole("dialog", {
+        name: "Acesso à demonstração",
+      });
+      await expect(notice).toContainText("Login social não está integrado");
+      await page.keyboard.press("Escape");
+      await expect(notice).not.toBeVisible();
+      await expect(
+        page.getByRole("button", { name: "Continuar com " + provider }),
+      ).toBeFocused();
+    }
+  }
+});

@@ -62,7 +62,7 @@ npm run audit
 
 Preview usa http://127.0.0.1:4173. Mantenha-o ativo para Lighthouse. npm run audit produz três medições por página (início/detalhe) e perfil (mobile/desktop), HTML/JSON individuais e audits/summary.json com medianas e ambiente.
 
-Testes usam Chromium com desktop 1440×1000 e mobile 390×844. Baselines visuais ficam em tests/flows.spec.ts-snapshots/. Relatório HTML: playwright-report/index.html. Traces de falha: test-results/. npx playwright show-report abre o relatório. A primeira geração de baselines deve ser revisada visualmente; elas verificam regressões da implementação, não equivalência automática ao Figma.
+A revisão final executa 36 testes (18 cenários em dois perfis), incluindo assets sociais, avisos e foco no login/cadastro. Testes usam Chromium com desktop 1440×1000 e mobile 390×844. Baselines visuais ficam em tests/flows.spec.ts-snapshots/. Relatório HTML: playwright-report/index.html. Traces de falha: test-results/. npx playwright show-report abre o relatório. A primeira geração de baselines deve ser revisada visualmente; elas verificam regressões da implementação, não equivalência automática ao Figma.
 
 ## Stack
 

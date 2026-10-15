@@ -3,21 +3,31 @@ import {
   createRoute,
   createRouter,
   redirect,
+  lazyRouteComponent,
 } from "@tanstack/react-router";
 import { Layout } from "./components/layout";
 import { SessionProvider } from "./components/session";
 import { Demo } from "./components/demo";
 import { Home } from "./pages/home";
-import { Detail } from "./pages/detail";
-import { Cart } from "./pages/cart";
-import { Checkout } from "./pages/checkout";
-import { Order } from "./pages/order";
-import { Auth } from "./pages/auth";
-import { Profile, Wallets, Favorites, Orders } from "./pages/account";
 import { Empty, ErrorState } from "./components/common";
 import { get, queryClient, message } from "./lib/api";
 import { isAxiosError } from "axios";
 import type { Search, Session } from "./lib/contracts";
+const Detail = lazyRouteComponent(() => import("./pages/detail"), "Detail");
+const Cart = lazyRouteComponent(() => import("./pages/cart"), "Cart");
+const Checkout = lazyRouteComponent(
+  () => import("./pages/checkout"),
+  "Checkout",
+);
+const Order = lazyRouteComponent(() => import("./pages/order"), "Order");
+const Auth = lazyRouteComponent(() => import("./pages/auth"), "Auth");
+const Profile = lazyRouteComponent(() => import("./pages/account"), "Profile");
+const Wallets = lazyRouteComponent(() => import("./pages/account"), "Wallets");
+const Favorites = lazyRouteComponent(
+  () => import("./pages/account"),
+  "Favorites",
+);
+const Orders = lazyRouteComponent(() => import("./pages/account"), "Orders");
 const root = createRootRoute({
   component: () => (
     <SessionProvider>

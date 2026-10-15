@@ -18,6 +18,15 @@ try {
     await page.evaluate(() => document.fonts.ready);
     await page.locator(".hero-art").evaluate((img) => img.decode());
     await page.screenshot({ path: "screenshots/" + name + ".png" });
+    await page.goto(base + "/login");
+    const social = page.locator(".social-auth");
+    await social.waitFor();
+    await page.evaluate(() => document.fonts.ready);
+    await social.locator("img").evaluateAll(async (images) => {
+      await Promise.all(images.map((image) => image.decode()));
+    });
+    await page.screenshot({ path: "screenshots/login-" + name + ".png" });
+    await social.screenshot({ path: "screenshots/social-" + name + ".png" });
     await page.close();
   }
 } finally {

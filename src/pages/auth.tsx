@@ -13,6 +13,7 @@ import { Dialog } from "../components/ui/dialog";
 import { Button } from "../components/ui/button";
 import { Field, Password } from "../components/common";
 import { Home } from "./home";
+import { SocialIcon } from "../components/social-icon";
 export function Auth() {
   const register = useRouterState().location.pathname === "/register",
     navigate = useNavigate(),
@@ -59,8 +60,15 @@ export function Auth() {
       </div>
       <Dialog
         open
+        onEscapeKeyDown={(event) => {
+          if (info) {
+            event.preventDefault();
+            setInfo("");
+          }
+        }}
         onOpenChange={(open) => {
-          if (!open) navigate({ to: "/" });
+          // A nested provider notice must close before the authentication modal.
+          if (!open && !info) navigate({ to: "/" });
         }}
         title={register ? "Criar perfil de colecionador" : "Entrar"}
         className="auth-dialog"
@@ -154,7 +162,7 @@ export function Auth() {
               )
             }
           >
-            🌐 Continuar com Google
+            <SocialIcon provider="Google" /> Continuar com Google
           </Button>
           <Button
             variant="outline"
@@ -164,7 +172,7 @@ export function Auth() {
               )
             }
           >
-            f Continuar com Facebook
+            <SocialIcon provider="Facebook" /> Continuar com Facebook
           </Button>
         </div>
         <p className="auth-bottom">

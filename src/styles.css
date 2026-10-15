@@ -1380,10 +1380,24 @@ dt {
   margin-bottom: 0;
 }
 .social-auth [data-slot="button"] {
+  gap: 12px;
   font-size: 12px;
   font-weight: 400;
   border-color: var(--border);
   min-height: 40px;
+}
+.google-icon {
+  position: relative;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+.google-icon img {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 .auth-bottom {
   font-size: 11px !important;

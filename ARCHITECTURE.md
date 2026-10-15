@@ -59,3 +59,9 @@ Editorial, redes sociais, newsletter e explorador não simulam sucesso funcional
 Playwright usa um contexto novo por teste, MSW real no navegador, desktop 1440 e mobile 390. Há baselines de início, detalhe, carrinho e pagamento; HTML report e traces ficam em playwright-report/ e test-results/. Capturas adicionais e auditorias medem também tablet 768.
 
 Lighthouse roda o build otimizado em preview, com imagens, fontes e todas as funcionalidades da demonstração. scripts/audit.mjs versiona as condições, executa três medições para cada combinação de página/perfil e salva HTML/JSON, ambiente e medianas. Resultados não devem ser extrapolados para um backend/blockchain de produção.
+
+## Revisão final — carregamento e identidade social
+
+As páginas secundárias usam lazyRouteComponent do TanStack Router. O bootstrap inicia o download apenas da rota acessada em paralelo com a aplicação e o MSW, evitando uma espera adicional em acessos diretos. A montagem continua aguardando a ativação do MSW, preservando a interceptação dos primeiros requests. Fontes 400/700 recebem preload no HTML com o mesmo URL final do CSS.
+
+Google e Facebook usam os SVGs originais exportados do Figma. O símbolo Google mantém os sete fragmentos e suas posições no slot de 20 px; o Facebook usa o asset integral de 20 px. São decorativos, pois o botão já identifica o provedor. Os mesmos componentes atendem login/cadastro em desktop/mobile. OAuth permanece fora do escopo e o aviso explica isso, com retorno de foco ao botão acionado.
