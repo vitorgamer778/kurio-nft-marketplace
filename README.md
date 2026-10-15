@@ -1,5 +1,7 @@
 # Kurio — NFT Marketplace
 
+**[Abrir demonstração pública](https://kurio-nft-marketplace-kappa.vercel.app)** · [Código-fonte](https://github.com/vitorgamer778/kurio-nft-marketplace) · [Autoavaliação](EVALUATION.md)
+
 Implementação do desafio [Jungle Gaming](https://github.com/junglegaming/frontend-challenge), em React e TypeScript. O enunciado original foi preservado em CHALLENGE.md. Identidade visual e artes provenientes do [Figma indicado](https://www.figma.com/design/Ff0SksUi7UFtPWUO8kyNtw/Frontend-Challenge?node-id=0-1).
 
 ## Executar
@@ -73,5 +75,7 @@ Assets e fontes são locais; não dependem de URLs temporárias do Figma. As art
 API.md descreve contratos e erros. ARCHITECTURE.md registra precisão, sessão, persistência, cache, idempotência, transporte e desvios visuais. EVALUATION.md registra a autoavaliação e as limitações, apoiada por testes e Lighthouse.
 
 ## Publicação
+
+A aplicação foi publicada na Vercel e verificada sem autenticação de hospedagem. O smoke test da versão pública exercita acesso direto, carrinho visitante, retorno do login, Socket.IO, rejeição de cotação antiga, compra confirmada, refresh do recibo e mobile. Evidência: verification/deployment-smoke.json. Relatório Playwright versionado: verification/playwright-report/index.html.
 
 O projeto inclui vercel.json com fallback SPA para refresh e acesso direto às rotas. Build: npm run build. Output: dist. A versão publicada deve manter mocks ativos e disponibilizar mockServiceWorker.js na raiz. Uma URL só deve ser apresentada como publicada após verificação do deployment.

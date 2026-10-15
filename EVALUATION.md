@@ -44,6 +44,8 @@ Os relatórios individuais HTML/JSON e audits/summary.json registram versões, h
 
 ## Limitações explícitas
 
+Demonstração pública: https://kurio-nft-marketplace-kappa.vercel.app. O build da Vercel corresponde aos mesmos bundles verificados localmente. O smoke test remoto foi executado sem login da Vercel, incluindo compra simulada e alteração de preço pelo socket. O recibo é acessível após refresh, e os itens comprados saem do carrinho.
+
 - Não há blockchain, gateway de pagamento, OAuth social, envio de newsletter ou explorador real; isso é coerente com o escopo do desafio.
 - Não é alegada equivalência pixel a pixel de todos os frames.
 - Persistência da simulação é por navegador. Carteiras e recibos são fictícios.

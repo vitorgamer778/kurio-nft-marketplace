@@ -1,0 +1,17 @@
+{
+  "base": "https://kurio-nft-marketplace-kappa.vercel.app",
+  "status": "passed",
+  "checks": [
+    "public unauthenticated deep route",
+    "real local assets",
+    "Socket.IO mock connection",
+    "guest cart and login return",
+    "review rejects price update from Socket.IO",
+    "confirmed simulated purchase",
+    "receipt refresh",
+    "purchased cart quantities removed",
+    "mobile 390 without horizontal overflow"
+  ],
+  "receipt": "https://kurio-nft-marketplace-kappa.vercel.app/order/593e099d-752f-4520-9c1a-58b1a01c936a",
+  "pageErrors": []
+}
