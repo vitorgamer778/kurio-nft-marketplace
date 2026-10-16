@@ -44,7 +44,7 @@ Limites: simulação local por navegador; não sincroniza diferentes dispositivo
 
 ## Design e acessibilidade
 
-Referência: arquivo original Frontend Challenge, Ff0SksUi7UFtPWUO8kyNtw. Foi criada uma cópia de trabalho nos rascunhos para permitir leitura pelo MCP, sem alterar o original. Contextos e manifesto de assets estão em design-reference/.
+Referência: arquivo original Frontend Challenge, Ff0SksUi7UFtPWUO8kyNtw. Foi criada uma cópia de trabalho nos rascunhos para permitir leitura pelo MCP, sem alterar o original. Contextos exportados e o manifesto auxiliar serviram à implementação e foram retirados da entrega após concluir a importação. Os assets locais utilizados pelo site permanecem em public/assets/.
 
 Tokens preservados: Ink #140D0A, Surface Card #241612, Foreground #F5F1EB, Primary #D28A4C, Text Accent #E89B55, Text Secondary #CFB28C. Fonte Roboto Mono distribuída localmente por @fontsource. As quatro artes originais do Figma são preservadas e têm variantes WebP responsivas, geradas com Sharp; não há arte substituta gerada por IA.
 

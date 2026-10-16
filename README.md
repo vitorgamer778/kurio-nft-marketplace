@@ -71,7 +71,7 @@ Para repetir os testes contra o deploy no PowerShell, defina PLAYWRIGHT_BASE_URL
 
 React 19, TypeScript, Vite, TanStack Router/Query, Axios, Tailwind CSS 4, componentes shadcn/ui adaptados com Radix/CVA/Slot, MSW 2.15, Socket.IO Client 4 e binding MSW 0.2, Playwright e Lighthouse. Dependências exatas estão no lockfile. A versão 2 do MSW foi fixada para compatibilidade com o peer dependency do binding.
 
-Assets e fontes são locais; não dependem de URLs temporárias do Figma. As artes têm versões WebP responsivas e originais preservados. Scripts de preparação estão em scripts/; download-assets.mjs usa URLs temporárias apenas para preparar os arquivos, não durante execução.
+Assets e fontes são locais; não dependem de URLs temporárias do Figma. As artes usadas pelo site estão em WebP responsivo, em 300/600/900 px. A entrega mantém os SVGs utilizados na interface; exports sem uso, PNGs de origem e scripts de importação já concluída foram removidos. Os scripts de build, testes, captura, smoke e auditoria continuam disponíveis.
 
 O build gera HTML inicial para o início e os 36 NFTs públicos, a partir das mesmas fixtures dos mocks. A página pode aparecer antes do JavaScript completo; controles são habilitados após ativar MSW e hidratar React. Contas, pedidos e sessões não entram nesse HTML. Filtros, usuários autenticados, cenários de falha/lentidão e builds com VITE_ENABLE_MOCKS=false usam o fluxo dinâmico. O runtime continua consultando REST e recebendo Socket.IO.
 
