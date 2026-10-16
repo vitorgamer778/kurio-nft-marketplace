@@ -13,14 +13,14 @@
       "page": "home",
       "profile": "mobile",
       "scores": {
-        "performance": 85,
+        "performance": 100,
         "accessibility": 100,
         "best-practices": 100,
         "seo": 100
       },
-      "lcp": 4020.5781000000006,
+      "lcp": 1594.92225,
       "cls": 0,
-      "tbt": 30
+      "tbt": 40.5
     },
     {
       "page": "home",
@@ -31,34 +31,34 @@
         "best-practices": 100,
         "seo": 100
       },
-      "lcp": 812.0392,
-      "cls": 0.0007350549768518519,
+      "lcp": 669.1594,
+      "cls": 0,
       "tbt": 0
     },
     {
       "page": "detail",
       "profile": "mobile",
       "scores": {
-        "performance": 85,
-        "accessibility": 100,
-        "best-practices": 100,
-        "seo": 100
-      },
-      "lcp": 4020.0995999999996,
-      "cls": 0.0008497958045511798,
-      "tbt": 16
-    },
-    {
-      "page": "detail",
-      "profile": "desktop",
-      "scores": {
         "performance": 99,
         "accessibility": 100,
         "best-practices": 100,
         "seo": 100
       },
-      "lcp": 885.1895499999999,
-      "cls": 0.0007350549768518519,
+      "lcp": 2112.8845,
+      "cls": 0,
+      "tbt": 27.5
+    },
+    {
+      "page": "detail",
+      "profile": "desktop",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "lcp": 474.93510000000003,
+      "cls": 0,
       "tbt": 0
     }
   ],
@@ -68,84 +68,84 @@
       "profile": "mobile",
       "run": 1,
       "scores": {
-        "performance": 85,
+        "performance": 100,
         "accessibility": 100,
         "best-practices": 100,
         "seo": 100
       },
-      "lcp": 4021.7339999999995,
+      "lcp": 1363.029,
       "cls": 0,
-      "tbt": 30
+      "tbt": 36
     },
     {
       "page": "home",
       "profile": "mobile",
       "run": 2,
       "scores": {
-        "performance": 85,
+        "performance": 100,
         "accessibility": 100,
         "best-practices": 100,
         "seo": 100
       },
-      "lcp": 4020.5781000000006,
+      "lcp": 1594.92225,
       "cls": 0,
-      "tbt": 30.5
+      "tbt": 40.5
     },
     {
       "page": "home",
       "profile": "mobile",
       "run": 3,
       "scores": {
-        "performance": 85,
+        "performance": 100,
         "accessibility": 100,
         "best-practices": 100,
         "seo": 100
       },
-      "lcp": 4015.7688,
+      "lcp": 1599.3255,
       "cls": 0,
-      "tbt": 30
+      "tbt": 43
     },
     {
       "page": "detail",
       "profile": "mobile",
       "run": 1,
       "scores": {
-        "performance": 85,
+        "performance": 99,
         "accessibility": 100,
         "best-practices": 100,
         "seo": 100
       },
-      "lcp": 4023.1111999999994,
-      "cls": 0.0008497958045511798,
-      "tbt": 16
+      "lcp": 2112.8845,
+      "cls": 0,
+      "tbt": 24.5
     },
     {
       "page": "detail",
       "profile": "mobile",
       "run": 2,
       "scores": {
-        "performance": 85,
+        "performance": 97,
         "accessibility": 100,
         "best-practices": 100,
         "seo": 100
       },
-      "lcp": 4020.0995999999996,
-      "cls": 0.0008497958045511798,
-      "tbt": 15.5
+      "lcp": 2510.1663999999996,
+      "cls": 0,
+      "tbt": 27.5
     },
     {
       "page": "detail",
       "profile": "mobile",
       "run": 3,
       "scores": {
-        "performance": 85,
+        "performance": 99,
         "accessibility": 100,
         "best-practices": 100,
         "seo": 100
       },
-      "lcp": 4019.2543999999994,
-      "cls": 0.0008497958045511798,
-      "tbt": 17
+      "lcp": 1965.1663,
+      "cls": 0,
+      "tbt": 32.708425000000034
     },
     {
       "page": "home",
@@ -157,8 +157,8 @@
         "best-practices": 100,
         "seo": 100
       },
-      "lcp": 812.9709999999999,
-      "cls": 0.0007350549768518519,
+      "lcp": 669.1594,
+      "cls": 0,
       "tbt": 0
     },
     {
@@ -171,8 +171,8 @@
         "best-practices": 100,
         "seo": 100
       },
-      "lcp": 812.0392,
-      "cls": 0.0007350549768518519,
+      "lcp": 477.5585,
+      "cls": 0,
       "tbt": 0
     },
     {
@@ -185,8 +185,8 @@
         "best-practices": 100,
         "seo": 100
       },
-      "lcp": 802.6381000000001,
-      "cls": 0.0007350549768518519,
+      "lcp": 672.4807999999999,
+      "cls": 0,
       "tbt": 0
     },
     {
@@ -194,13 +194,13 @@
       "profile": "desktop",
       "run": 1,
       "scores": {
-        "performance": 99,
+        "performance": 100,
         "accessibility": 100,
         "best-practices": 100,
         "seo": 100
       },
-      "lcp": 882.3171,
-      "cls": 0.0007350549768518519,
+      "lcp": 454.69079999999997,
+      "cls": 0,
       "tbt": 0
     },
     {
@@ -208,13 +208,13 @@
       "profile": "desktop",
       "run": 2,
       "scores": {
-        "performance": 99,
+        "performance": 100,
         "accessibility": 100,
         "best-practices": 100,
         "seo": 100
       },
-      "lcp": 885.1895499999999,
-      "cls": 0.0007350549768518519,
+      "lcp": 569.2502,
+      "cls": 0,
       "tbt": 0
     },
     {
@@ -222,13 +222,13 @@
       "profile": "desktop",
       "run": 3,
       "scores": {
-        "performance": 99,
+        "performance": 100,
         "accessibility": 100,
         "best-practices": 100,
         "seo": 100
       },
-      "lcp": 886.4695000000002,
-      "cls": 0.0007350549768518519,
+      "lcp": 474.93510000000003,
+      "cls": 0,
       "tbt": 0
     }
   ]

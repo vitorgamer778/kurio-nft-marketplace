@@ -1,0 +1,44 @@
+[
+  {
+    "path": "/",
+    "status": 200,
+    "type": "text/html; charset=utf-8",
+    "prefetch": "/",
+    "root": true
+  },
+  {
+    "path": "/nft/emerald-ape-042",
+    "status": 200,
+    "type": "text/html; charset=utf-8",
+    "prefetch": "/nft/emerald-ape-042",
+    "root": true
+  },
+  {
+    "path": "/nft/nft-18",
+    "status": 200,
+    "type": "text/html; charset=utf-8",
+    "prefetch": "/nft/nft-18",
+    "root": true
+  },
+  {
+    "path": "/login",
+    "status": 200,
+    "type": "text/html; charset=utf-8",
+    "prefetch": null,
+    "root": true
+  },
+  {
+    "path": "/profile",
+    "status": 200,
+    "type": "text/html; charset=utf-8",
+    "prefetch": null,
+    "root": true
+  },
+  {
+    "path": "/nft/missing",
+    "status": 200,
+    "type": "text/html; charset=utf-8",
+    "prefetch": null,
+    "root": true
+  }
+]

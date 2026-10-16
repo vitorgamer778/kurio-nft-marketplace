@@ -1,0 +1,11 @@
+{
+  "id": "dpl_5j2XbdB2Jf8zLTzNUmVZ6cTdHKGH",
+  "state": "READY",
+  "commit": "5362ac0acaa991382f581338195dfafed866dbfd",
+  "alias": [
+    "kurio-nft-marketplace-kappa.vercel.app",
+    "kurio-nft-marketplace-vitorgamer778s-projects.vercel.app",
+    "kurio-nft-marketplace-git-main-vitorgamer778s-projects.vercel.app"
+  ],
+  "target": "production"
+}
