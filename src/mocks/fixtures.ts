@@ -42,6 +42,12 @@ export const initialNFTs: NFT[] = Array.from({ length: 36 }, (_, i) => ({
   collection: i < 9 ? "Arte digital" : collections[(i - 9) % 9],
   network: i < 9 ? "Ethereum" : networks[i % 3],
   stock: i === 35 ? 0 : 20,
+  editionStock: {
+    "1/1": i === 35 ? 0 : 1,
+    "1/10": i === 35 ? 0 : 10,
+    "1/50": i === 35 ? 0 : 20,
+    ABERTA: i === 35 ? 0 : 20,
+  },
   version: 1,
   rarity: i % 3 === 0 ? "Raro" : "Comum",
   editions: ["1/1", "1/10", "1/50", "ABERTA"],

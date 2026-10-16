@@ -1,8 +1,13 @@
 import { test, expect, type Page } from "@playwright/test";
 const email = "colecionador@kurio.test",
   password = "Kurio123!";
+async function interactive(page: Page) {
+  await page.locator(".connection").waitFor({ state: "attached" });
+  await expect(page.locator("#root")).not.toHaveAttribute("inert");
+  await expect(page.locator(".connection")).toHaveAttribute("aria-label", "Atualizações em tempo real conectadas");
+}
 async function scenario(page: Page, value: string) {
-  await page.locator("#main").waitFor();
+  await interactive(page);
   await page.evaluate(async (value) => {
     await fetch("/api/demo/scenario", {
       method: "POST",
@@ -12,6 +17,7 @@ async function scenario(page: Page, value: string) {
   }, value);
 }
 async function event(page: Page, kind: string) {
+  await interactive(page);
   await page.evaluate(async (kind) => {
     await fetch("/api/demo/event", {
       method: "POST",
@@ -71,11 +77,11 @@ test("catálogo combina filtros, ordenação, busca e restaura histórico", asyn
   if (isMobile)
     await page.getByRole("button", { name: "Abrir filtros" }).click();
   await page
-    .getByRole("checkbox", { name: "Fotografia (12)", exact: true })
+    .getByRole("checkbox", { name: "Fotografia (3)", exact: true })
     .check();
   await expect(page).toHaveURL(/collections=Fotografia/);
   await page
-    .getByRole("checkbox", { name: "Polygon (78)", exact: true })
+    .getByRole("checkbox", { name: "Polygon (9)", exact: true })
     .check();
   if (isMobile) {
     await page
@@ -433,6 +439,7 @@ test("teclado, foco de diálogo e ausência de overflow", async ({
 }) => {
   await page.goto("/");
   await expect(page.locator(".nft-card")).toHaveCount(9);
+  await interactive(page);
   await page.keyboard.press("Tab");
   await expect(
     page.getByRole("link", { name: "Pular para conteúdo" }),

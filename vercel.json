@@ -1,8 +1,9 @@
 {
+  "cleanUrls": true,
   "rewrites": [
     {
       "source": "/((?!assets/|mockServiceWorker.js|favicon.svg|robots.txt).*)",
-      "destination": "/index.html"
+      "destination": "/spa"
     }
   ]
 }

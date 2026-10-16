@@ -15,6 +15,8 @@ import {
   Empty,
 } from "../components/common";
 import { Footer } from "../components/layout";
+import { isAxiosError } from "axios";
+import { useFormValidation } from "../components/form-validation";
 type Attempt = {
   key: string;
   input: {
@@ -25,6 +27,7 @@ type Attempt = {
   };
 };
 export function Checkout() {
+  const validation = useFormValidation();
   const submitting = useRef(false);
   const { user, notify } = useSession(),
     navigate = useNavigate(),
@@ -38,9 +41,27 @@ export function Checkout() {
     [network, setNetwork] = useState(""),
     [connected, setConnected] = useState(""),
     [review, setReview] = useState<Quote | null>(null),
-    [collector, setCollector] = useState<Order["collector"]>({
-      name: user?.name || "",
-      email: user?.email || "",
+    [collector, setCollector] = useState<Order["collector"]>(() => {
+      const initial = {
+        name: user?.name || "",
+        email: user?.email || "",
+        username: user?.username || "",
+        profileName: user?.name || "",
+        referral: "KURIO",
+        ens: user?.ens || "colecionador.eth",
+        note: "",
+        secondary: "",
+      };
+      try {
+        return {
+          ...initial,
+          ...JSON.parse(
+            sessionStorage.getItem("kurio.checkout.draft." + user?.id) || "{}",
+          ),
+        };
+      } catch {
+        return initial;
+      }
     }),
     [error, setError] = useState("");
   const attemptKey = "kurio.attempt." + user?.id;
@@ -52,6 +73,13 @@ export function Checkout() {
     }
   });
   const wallet = wallets.data?.find((w) => w.id === walletId);
+  useEffect(() => {
+    if (user?.id)
+      sessionStorage.setItem(
+        "kurio.checkout.draft." + user.id,
+        JSON.stringify(collector),
+      );
+  }, [collector, user?.id]);
   useEffect(() => {
     try {
       setAttempt(JSON.parse(sessionStorage.getItem(attemptKey) || "null"));
@@ -91,7 +119,25 @@ export function Checkout() {
       navigate({ to: "/order/$id", params: { id: result.id } });
     },
     onError: (e) => {
+      validation.fail(e);
       const text = message(e);
+      const code = isAxiosError(e) ? e.response?.data?.code : undefined;
+      if (
+        code === "QUOTE_CHANGED" ||
+        code === "QUOTE_INVALID" ||
+        (isAxiosError(e) && e.response?.status === 422)
+      ) {
+        sessionStorage.removeItem(attemptKey);
+        setAttempt(null);
+        setReview(null);
+        queryClient.invalidateQueries({ queryKey: ["quote"] });
+        setError(
+          text +
+            " Nenhum pedido foi criado; revise os dados e confirme novamente.",
+        );
+        notify(text);
+        return;
+      }
       setError(
         text +
           " A tentativa está salva; recuperar não cria uma compra duplicada.",
@@ -104,6 +150,7 @@ export function Checkout() {
   });
   const reviewOrder = async () => {
     setError("");
+    validation.clear();
     try {
       const latest = await post<Quote>("/quote");
       queryClient.setQueryData(["quote", user?.id ?? "guest"], latest);
@@ -165,7 +212,21 @@ export function Checkout() {
       <div className="checkout-layout">
         <form
           id="checkout-form"
+          ref={validation.formRef}
           className="checkout-form"
+          onChange={(e) => {
+            const fields = new FormData(e.currentTarget);
+            setCollector({
+              name: String(fields.get("name") || ""),
+              email: String(fields.get("email") || ""),
+              username: String(fields.get("username") || ""),
+              profileName: String(fields.get("profileName") || ""),
+              referral: String(fields.get("referral") || ""),
+              ens: String(fields.get("ens") || ""),
+              note: String(fields.get("note") || ""),
+              secondary: String(fields.get("secondary") || ""),
+            });
+          }}
           onSubmit={(e) => {
             e.preventDefault();
             const fields = new FormData(e.currentTarget);
@@ -176,6 +237,7 @@ export function Checkout() {
               referral: String(fields.get("referral")),
               ens: String(fields.get("ens")),
               note: String(fields.get("note") || ""),
+              secondary: String(fields.get("secondary") || ""),
             });
             reviewOrder();
           }}
@@ -185,6 +247,7 @@ export function Checkout() {
             <Field
               label="Nome de exibição"
               name="name"
+              error={validation.fields.name}
               required
               value={collector.name}
               onChange={(e) =>
@@ -194,6 +257,7 @@ export function Checkout() {
             <Field
               label="E-mail"
               name="email"
+              error={validation.fields.email}
               type="email"
               required
               value={collector.email}
@@ -204,14 +268,16 @@ export function Checkout() {
             <Field
               label="Nome de usuário"
               name="username"
+              error={validation.fields.username}
               required
-              defaultValue={user?.username}
+              defaultValue={collector.username}
             />
             <Field
               label="Nome do perfil"
               name="profileName"
+              error={validation.fields.profileName}
               required
-              defaultValue={user?.name}
+              defaultValue={collector.profileName}
             />
             <Field
               label="Endereço da carteira"
@@ -230,23 +296,27 @@ export function Checkout() {
             <Field
               label="Código de indicação"
               name="referral"
+              error={validation.fields.referral}
               required
-              defaultValue="KURIO"
+              defaultValue={collector.referral}
             />
             <Field
               label="Nome ENS"
               name="ens"
+              error={validation.fields.ens}
               required
-              defaultValue={user?.ens || "colecionador.eth"}
+              defaultValue={collector.ens}
             />
             <Field
               label="ENS ou carteira secundária (opcional)"
               name="secondary"
+              error={validation.fields.secondary}
+              defaultValue={collector.secondary}
             />
           </div>
           <label className="field collector-note">
             <span>Observação do colecionador (opcional)</span>
-            <textarea name="note" rows={5} />
+            <textarea name="note" rows={5} defaultValue={collector.note} />
           </label>
           <label className="checkbox-line">
             <input type="checkbox" required />

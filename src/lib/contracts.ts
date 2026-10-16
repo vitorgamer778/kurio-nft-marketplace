@@ -7,6 +7,7 @@ export type NFT = {
   collection: string;
   network: string;
   stock: number;
+  editionStock: Record<string, number>;
   version: number;
   rarity: string;
   editions: string[];
@@ -73,6 +74,7 @@ export type Order = {
     referral?: string;
     ens?: string;
     note?: string;
+    secondary?: string;
   };
   created: number;
   settleAt: number;

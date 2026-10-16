@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Link, useParams } from "@tanstack/react-router";
 import { Clock, TriangleAlert } from "lucide-react";
@@ -19,6 +19,10 @@ export function Order() {
       query.state.data?.status === "pending" ? 800 : false,
     retry: 1,
   });
+  useEffect(() => {
+    if (q.data?.status === "confirmed" && user?.id)
+      sessionStorage.removeItem("kurio.checkout.draft." + user.id);
+  }, [q.data?.status, user?.id]);
   if (q.isPending) return <Skeleton />;
   if (q.isError)
     return (

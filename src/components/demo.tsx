@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { post, message, refresh } from "../lib/api";
+import { useQuery } from "@tanstack/react-query";
+import { post, get, message, refresh } from "../lib/api";
 import { useSession } from "./session";
 import { Button } from "./ui/button";
 import { Dialog } from "./ui/dialog";
@@ -7,10 +8,19 @@ export function Demo() {
   const { notify } = useSession(),
     [open, setOpen] = useState(false),
     [enabled] = useState(() => {
-      if (new URLSearchParams(location.search).get("demo") === "1")
+      if (
+        ["1", '"1"'].includes(
+          new URLSearchParams(location.search).get("demo") || "",
+        )
+      )
         sessionStorage.setItem("kurio.demo", "1");
       return sessionStorage.getItem("kurio.demo") === "1";
     });
+  const scenario = useQuery({
+    queryKey: ["demo"],
+    queryFn: ({ signal }) => get<{ scenario: string }>("/demo", signal),
+    enabled,
+  });
   const action = async (path: string, data?: unknown) => {
     try {
       await post("/demo/" + path, data);
@@ -38,7 +48,8 @@ export function Demo() {
           <span>Condição da simulação</span>
           <select
             aria-label="Cenário"
-            defaultValue="standard"
+            value={scenario.data?.scenario || "standard"}
+            disabled={scenario.isPending}
             onChange={(e) => action("scenario", { scenario: e.target.value })}
           >
             {[

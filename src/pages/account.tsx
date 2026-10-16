@@ -20,6 +20,7 @@ import {
   NFTCard,
 } from "../components/common";
 import { Button } from "../components/ui/button";
+import { useFormValidation } from "../components/form-validation";
 export function AccountLayout({ children }: { children: ReactNode }) {
   const { logout, notify } = useSession();
   return (
@@ -55,6 +56,8 @@ export function AccountLayout({ children }: { children: ReactNode }) {
   );
 }
 export function Profile() {
+  const validation = useFormValidation();
+  const passwordValidation = useFormValidation();
   const { user, notify } = useSession(),
     [error, setError] = useState(""),
     [avatar, setAvatar] = useState<string | null>(null);
@@ -70,7 +73,10 @@ export function Profile() {
       notify("Dados do perfil salvos.");
       setError("");
     },
-    onError: (e) => setError(message(e)),
+    onError: (e) => {
+      setError(message(e));
+      validation.fail(e);
+    },
   });
   const password = useMutation({
     mutationFn: (data: { current: string; password: string }) =>
@@ -79,7 +85,10 @@ export function Profile() {
       notify("Senha alterada na simulação.");
       setError("");
     },
-    onError: (e) => setError(message(e)),
+    onError: (e) => {
+      setError(message(e));
+      passwordValidation.fail(e);
+    },
   });
   if (q.isPending) return <Skeleton />;
   if (q.isError)
@@ -94,10 +103,12 @@ export function Profile() {
     <AccountLayout>
       <h1>Perfil do colecionador</h1>
       <form
+        ref={validation.formRef}
         key={u.id}
         onSubmit={(e) => {
           e.preventDefault();
           setError("");
+          validation.clear();
           const f = new FormData(e.currentTarget);
           mutation.mutate({
             name: String(f.get("name")),
@@ -113,18 +124,21 @@ export function Profile() {
           <Field
             label="Nome de exibição"
             name="name"
+            error={validation.fields.name}
             defaultValue={u.name}
             required
           />
           <Field
             label="Nome de usuário"
             name="username"
+            error={validation.fields.username}
             defaultValue={u.username}
             required
           />
           <Field
             label="E-mail"
             name="email"
+            error={validation.fields.email}
             type="email"
             defaultValue={u.email}
             required
@@ -187,13 +201,18 @@ export function Profile() {
         </Button>
       </form>
       <form
+        ref={passwordValidation.formRef}
         className="password-form"
         onSubmit={(e) => {
           e.preventDefault();
           setError("");
+          passwordValidation.clear();
           const f = new FormData(e.currentTarget);
           if (f.get("password") !== f.get("confirm")) {
             setError("As novas senhas não coincidem.");
+            passwordValidation.invalidate("As novas senhas não coincidem.", {
+              confirm: "As novas senhas não coincidem.",
+            });
             return;
           }
           password.mutate({
@@ -203,9 +222,21 @@ export function Profile() {
         }}
       >
         <h2>Alterar senha</h2>
-        <Password label="Senha atual" name="current" />
-        <Password label="Nova senha" name="password" />
-        <Password label="Confirmar nova senha" name="confirm" />
+        <Password
+          label="Senha atual"
+          name="current"
+          error={passwordValidation.fields.current}
+        />
+        <Password
+          label="Nova senha"
+          name="password"
+          error={passwordValidation.fields.password}
+        />
+        <Password
+          label="Confirmar nova senha"
+          name="confirm"
+          error={passwordValidation.fields.confirm}
+        />
         <Button disabled={password.isPending}>Salvar senha</Button>
       </form>
       {error && (
@@ -217,6 +248,7 @@ export function Profile() {
   );
 }
 function WalletForm({ wallet }: { wallet?: Wallet }) {
+  const validation = useFormValidation();
   const { notify } = useSession(),
     [error, setError] = useState("");
   const mutation = useMutation({
@@ -226,13 +258,18 @@ function WalletForm({ wallet }: { wallet?: Wallet }) {
       notify("Carteira salva.");
       setError("");
     },
-    onError: (e) => setError(message(e)),
+    onError: (e) => {
+      setError(message(e));
+      validation.fail(e);
+    },
   });
   return (
     <form
+      ref={validation.formRef}
       className="wallet-form"
       onSubmit={(e) => {
         e.preventDefault();
+        validation.clear();
         const f = new FormData(e.currentTarget);
         mutation.mutate({
           id: wallet?.id || crypto.randomUUID(),
@@ -255,12 +292,14 @@ function WalletForm({ wallet }: { wallet?: Wallet }) {
         <Field
           label="Apelido da carteira"
           name="name"
+          error={validation.fields.name}
           defaultValue={wallet?.name}
           required
         />
         <Field
           label="Endereço da carteira ou ENS"
           name="address"
+          error={validation.fields.address}
           defaultValue={wallet?.address}
           required
         />
@@ -351,10 +390,16 @@ export function Favorites() {
   return (
     <AccountLayout>
       <h1>Lista de interesse</h1>
-      {q.isPending || nfts.isPending ? (
+      {q.isError || nfts.isError ? (
+        <ErrorState
+          error={new Error(message(q.error || nfts.error))}
+          retry={() => {
+            q.refetch();
+            nfts.refetch();
+          }}
+        />
+      ) : q.isPending || (q.isSuccess && nfts.isPending) ? (
         <Skeleton cards />
-      ) : q.isError || nfts.isError ? (
-        <ErrorState error={new Error(message(q.error || nfts.error))} />
       ) : nfts.data?.length ? (
         <div className="nft-grid">
           {nfts.data.map((n) => (

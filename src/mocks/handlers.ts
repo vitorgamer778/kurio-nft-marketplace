@@ -14,6 +14,7 @@ import {
 import type { Scenario } from "./db";
 import type { CartItem, Order, Wallet } from "../lib/contracts";
 import { wei, eth } from "../lib/money";
+import { availableQuantity } from "../lib/inventory";
 const stream = ws.link("wss://kurio.mock/");
 type Peer = {
   emit: (event: string, payload: unknown) => void;
@@ -83,7 +84,7 @@ function endpoint(fn: (context: Context) => unknown | Promise<unknown>) {
     } catch (error) {
       if (error instanceof ApiError)
         return HttpResponse.json(
-          { message: error.message, fields: error.fields },
+          { message: error.message, fields: error.fields, code: error.code },
           { status: error.status },
         );
       return HttpResponse.json(
@@ -111,19 +112,27 @@ const handlers = [
         password: string;
       }>(request);
       const a = db.accounts.find(
-        (a) => a.user.email.toLowerCase() === email.toLowerCase(),
+        (a) => a.user.email.trim().toLowerCase() === email.trim().toLowerCase(),
       );
       if (!a || (await digest(password, a.salt)) !== a.hash)
-        throw new ApiError(422, "E-mail ou senha incorretos.");
-      const combined = [...a.cart.items];
-      for (const item of db.guest.items) {
+        throw new ApiError(422, "E-mail ou senha incorretos.", {
+          email: "Verifique o e-mail e a senha.",
+          password: "Verifique o e-mail e a senha.",
+        });
+      const requested = [...a.cart.items, ...db.guest.items];
+      const combined: CartItem[] = [];
+      for (const item of requested) {
         const old = combined.find(
           (i) => i.nftId === item.nftId && i.edition === item.edition,
         );
-        const stock = db.nfts.find((n) => n.id === item.nftId)?.stock ?? 0;
-        if (old) old.quantity = Math.min(stock, old.quantity + item.quantity);
-        else
-          combined.push({ ...item, quantity: Math.min(stock, item.quantity) });
+        const n = db.nfts.find((n) => n.id === item.nftId);
+        if (!n) continue;
+        const quantity = Math.min(
+          availableQuantity(n, item.edition, combined),
+          (old?.quantity ?? 0) + item.quantity,
+        );
+        if (old) old.quantity = quantity;
+        else if (quantity) combined.push({ ...item, quantity });
       }
       a.cart.items = combined.filter((i) => i.quantity > 0);
       a.cart.coupon = a.cart.coupon || db.guest.coupon;
@@ -138,6 +147,9 @@ const handlers = [
         user: a.user,
         token: db.session.token,
         expires: db.session.expires,
+        cartAdjusted:
+          combined.reduce((s, i) => s + i.quantity, 0) !==
+          requested.reduce((s, i) => s + i.quantity, 0),
       };
     }),
   ),
@@ -157,19 +169,31 @@ const handlers = [
         throw new ApiError(
           422,
           "Preencha nome, e-mail e senha com pelo menos 8 caracteres.",
+          {
+            ...(!name?.trim() ? { name: "Informe seu nome." } : {}),
+            ...(!/^\S+@\S+\.\S+$/.test(email || "")
+              ? { email: "Informe um e-mail válido." }
+              : {}),
+            ...(!password || password.length < 8
+              ? { password: "Use pelo menos 8 caracteres." }
+              : {}),
+          },
         );
       if (
         db.accounts.some(
-          (a) => a.user.email.toLowerCase() === email.toLowerCase(),
+          (a) =>
+            a.user.email.trim().toLowerCase() === email.trim().toLowerCase(),
         )
       )
-        throw new ApiError(409, "Já existe uma conta com este e-mail.");
+        throw new ApiError(409, "Já existe uma conta com este e-mail.", {
+          email: "Este e-mail já está cadastrado.",
+        });
       const id = crypto.randomUUID(),
         salt = crypto.randomUUID();
       db.accounts.push({
         user: {
           id,
-          email,
+          email: email.trim().toLowerCase(),
           name,
           username: email.split("@")[0],
           ens: "",
@@ -235,11 +259,27 @@ const handlers = [
             : b.created - a.created,
       );
       const page = Math.max(1, Number(p.get("page")) || 1);
+      const catalogue = db.scenario === "empty" ? [] : db.nfts;
+      const facets = {
+        collections: Object.fromEntries(
+          [...new Set(db.nfts.map((n) => n.collection))].map((name) => [
+            name,
+            catalogue.filter((n) => n.collection === name).length,
+          ]),
+        ),
+        networks: Object.fromEntries(
+          [...new Set(db.nfts.map((n) => n.network))].map((name) => [
+            name,
+            catalogue.filter((n) => n.network === name).length,
+          ]),
+        ),
+      };
       return {
         items: list.slice((page - 1) * 9, page * 9),
         total: list.length,
         pages: Math.ceil(list.length / 9),
         page,
+        facets,
       };
     }),
   ),
@@ -285,19 +325,18 @@ const handlers = [
         item = await body<CartItem>(request),
         n = db.nfts.find((n) => n.id === item.nftId);
       if (!n) throw new ApiError(404, "NFT não encontrado.");
+      if (item.quantity === 0) {
+        cart.items = cart.items.filter(
+          (i) => !(i.nftId === item.nftId && i.edition === item.edition),
+        );
+        if (!cart.items.length) cart.coupon = "";
+        save();
+        return cart;
+      }
       if (
         !Number.isInteger(item.quantity) ||
         item.quantity < 0 ||
-        item.quantity >
-          Math.min(
-            n.stock,
-            item.edition === "1/1" ? 1 : item.edition === "1/10" ? 10 : 50,
-          ) ||
-        item.quantity +
-          cart.items
-            .filter((i) => i.nftId === item.nftId && i.edition !== item.edition)
-            .reduce((sum, i) => sum + i.quantity, 0) >
-          n.stock ||
+        item.quantity > availableQuantity(n, item.edition, cart.items) ||
         !n.editions.includes(item.edition)
       )
         throw new ApiError(409, "Quantidade indisponível para esta edição.");
@@ -354,6 +393,8 @@ const handlers = [
         throw new ApiError(
           409,
           "Os valores mudaram. Revise a nova cotação antes de confirmar.",
+          {},
+          "QUOTE_CHANGED",
         );
       const wallet = a.wallets.find((w) => w.id === input.walletId);
       if (!wallet || wallet.network !== input.network)
@@ -366,7 +407,26 @@ const handlers = [
         !input.collector.ens?.trim() ||
         !/^\S+@\S+\.\S+$/.test(input.collector.email)
       )
-        throw new ApiError(422, "Revise os dados do colecionador.");
+        throw new ApiError(422, "Revise os dados do colecionador.", {
+          ...(!input.collector.name?.trim()
+            ? { name: "Informe seu nome." }
+            : {}),
+          ...(!/^\S+@\S+\.\S+$/.test(input.collector.email || "")
+            ? { email: "Informe um e-mail válido." }
+            : {}),
+          ...(!input.collector.username?.trim()
+            ? { username: "Informe um usuário." }
+            : {}),
+          ...(!input.collector.profileName?.trim()
+            ? { profileName: "Informe o nome do perfil." }
+            : {}),
+          ...(!input.collector.referral?.trim()
+            ? { referral: "Informe o código de indicação." }
+            : {}),
+          ...(!input.collector.ens?.trim()
+            ? { ens: "Informe o nome ENS." }
+            : {}),
+        });
       const id = crypto.randomUUID(),
         order: Order = {
           id,
@@ -433,16 +493,37 @@ const handlers = [
         !input.username?.trim() ||
         !/^\S+@\S+\.\S+$/.test(input.email || "")
       )
-        throw new ApiError(422, "Revise nome, usuário e e-mail.");
+        throw new ApiError(422, "Revise nome, usuário e e-mail.", {
+          ...(!input.name?.trim() ? { name: "Informe o nome." } : {}),
+          ...(!input.username?.trim()
+            ? { username: "Informe o nome de usuário." }
+            : {}),
+          ...(!/^\S+@\S+\.\S+$/.test(input.email || "")
+            ? { email: "Informe um e-mail válido." }
+            : {}),
+        });
       if (
         db.accounts.some(
           (b) =>
             b !== a &&
-            (b.user.email === input.email ||
+            (b.user.email.toLowerCase() === input.email?.trim().toLowerCase() ||
               b.user.username === input.username),
         )
       )
-        throw new ApiError(409, "E-mail ou nome de usuário já utilizado.");
+        throw new ApiError(409, "E-mail ou nome de usuário já utilizado.", {
+          ...(db.accounts.some(
+            (b) =>
+              b !== a &&
+              b.user.email.toLowerCase() === input.email?.trim().toLowerCase(),
+          )
+            ? { email: "E-mail já utilizado." }
+            : {}),
+          ...(db.accounts.some(
+            (b) => b !== a && b.user.username === input.username,
+          )
+            ? { username: "Nome de usuário já utilizado." }
+            : {}),
+        });
       if (
         input.avatar &&
         !/^data:image\/(png|jpeg|webp);base64,/.test(input.avatar)
@@ -452,7 +533,7 @@ const handlers = [
         ...a.user,
         name: input.name,
         username: input.username,
-        email: input.email!,
+        email: input.email!.trim().toLowerCase(),
         ens: input.ens || "",
         nickname: input.nickname || "",
         avatar: input.avatar || "",
@@ -470,11 +551,14 @@ const handlers = [
           password: string;
         }>(request);
       if ((await digest(current, a.salt)) !== a.hash)
-        throw new ApiError(422, "Senha atual incorreta.");
+        throw new ApiError(422, "Senha atual incorreta.", {
+          current: "Senha atual incorreta.",
+        });
       if (password.length < 8)
         throw new ApiError(
           422,
           "A nova senha deve ter pelo menos 8 caracteres.",
+          { password: "Use pelo menos 8 caracteres." },
         );
       a.salt = crypto.randomUUID();
       a.hash = await digest(password, a.salt);
@@ -522,6 +606,13 @@ const handlers = [
         throw new ApiError(
           422,
           "Informe nome, rede, provedor e endereço 0x válido ou ENS.",
+          {
+            ...(!input.name?.trim() ? { name: "Informe um apelido." } : {}),
+            ...(!/^0x[0-9a-fA-F]{40}$/.test(input.address || "") &&
+            !/^[-a-z0-9.]+\.eth$/.test(input.address || "")
+              ? { address: "Informe um endereço 0x válido ou ENS." }
+              : {}),
+          },
         );
       const w = { ...input, id: String(params.id) };
       if (!a.wallets.length) w.primary = true;

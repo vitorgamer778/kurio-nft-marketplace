@@ -6,7 +6,7 @@ Implementação do desafio [Jungle Gaming](https://github.com/junglegaming/front
 
 ## Executar
 
-Requer Node.js 22+ e npm. Validado com Node 24 no Windows.
+Requer Node.js 22.12+ e npm. Validado com Node 24 no Windows.
 
 ```sh
 npm ci
@@ -56,19 +56,24 @@ npm run build
 npm run preview
 npx playwright install chromium
 npm test
+npm run test:production
 npm run test:update
 npm run audit
 ```
 
 Preview usa http://127.0.0.1:4173. Mantenha-o ativo para Lighthouse. npm run audit produz três medições por página (início/detalhe) e perfil (mobile/desktop), HTML/JSON individuais e audits/summary.json com medianas e ambiente.
 
-A revisão final executa 36 testes (18 cenários em dois perfis), incluindo assets sociais, avisos e foco no login/cadastro. Testes usam Chromium com desktop 1440×1000 e mobile 390×844. Baselines visuais ficam em tests/flows.spec.ts-snapshots/. Relatório HTML: playwright-report/index.html. Traces de falha: test-results/. npx playwright show-report abre o relatório. A primeira geração de baselines deve ser revisada visualmente; elas verificam regressões da implementação, não equivalência automática ao Figma.
+A suíte de desenvolvimento contém 72 testes. Depois de npm run build, npm run test:production executa 78 testes no build otimizado: fluxos existentes, regressões R01–R18 (performance é medida pelo Lighthouse), zoom e seis verificações de HTML público/hidratação/cenários. Os perfis são desktop 1440×1000 e mobile 390×844, com passagem adicional por tablet 768. Baselines ficam em tests/flows.spec.ts-snapshots/. O relatório HTML fica em playwright-report/index.html e o JSON de produção em verification/production-tests.json; traces de falha ficam em test-results/. npx playwright show-report abre o relatório. As baselines verificam regressões da implementação, não equivalência automática ao Figma.
+
+Para repetir os testes contra o deploy no PowerShell, defina PLAYWRIGHT_BASE_URL com a URL pública e execute npm run test:production. O relatório de cada ponto está em verification/REVIEW-FIXES.md.
 
 ## Stack
 
 React 19, TypeScript, Vite, TanStack Router/Query, Axios, Tailwind CSS 4, componentes shadcn/ui adaptados com Radix/CVA/Slot, MSW 2.15, Socket.IO Client 4 e binding MSW 0.2, Playwright e Lighthouse. Dependências exatas estão no lockfile. A versão 2 do MSW foi fixada para compatibilidade com o peer dependency do binding.
 
 Assets e fontes são locais; não dependem de URLs temporárias do Figma. As artes têm versões WebP responsivas e originais preservados. Scripts de preparação estão em scripts/; download-assets.mjs usa URLs temporárias apenas para preparar os arquivos, não durante execução.
+
+O build gera HTML inicial para o início e os 36 NFTs públicos, a partir das mesmas fixtures dos mocks. A página pode aparecer antes do JavaScript completo; controles são habilitados após ativar MSW e hidratar React. Contas, pedidos e sessões não entram nesse HTML. Filtros, usuários autenticados, cenários de falha/lentidão e builds com VITE_ENABLE_MOCKS=false usam o fluxo dinâmico. O runtime continua consultando REST e recebendo Socket.IO.
 
 ## Documentação e avaliação
 

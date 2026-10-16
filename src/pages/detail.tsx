@@ -14,6 +14,8 @@ import {
 import { Button } from "../components/ui/button";
 import { Dialog } from "../components/ui/dialog";
 import { Footer } from "../components/layout";
+import { availableQuantity } from "../lib/inventory";
+import { Tabs } from "../components/tabs";
 export function Detail() {
   const { id } = useParams({ strict: false }) as { id: string },
     navigate = useNavigate(),
@@ -80,10 +82,7 @@ export function Detail() {
       />
     );
   const n = q.data,
-    max = Math.min(
-      n.stock,
-      edition === "1/1" ? 1 : edition === "1/10" ? 10 : 50,
-    );
+    max = availableQuantity(n, edition);
   return (
     <>
       <Breadcrumb label="Mercado" />
@@ -96,7 +95,12 @@ export function Detail() {
                 aria-label={"Ampliar imagem " + (i + 1)}
                 onClick={() => setZoom(true)}
               >
-                <img src={n.image} alt="" width="100" height="100" />
+                <img
+                  src={n.image.replace(".webp", "-300.webp")}
+                  alt=""
+                  width="100"
+                  height="100"
+                />
               </button>
             ))}
           </div>
@@ -105,7 +109,16 @@ export function Detail() {
             onClick={() => setZoom(true)}
             aria-label="Ampliar arte"
           >
-            <img src={n.image} alt={n.name} width="420" height="420" />
+            <img
+              src={n.image.replace(".webp", "-600.webp")}
+              srcSet={`${n.image.replace(".webp", "-300.webp")} 300w, ${n.image.replace(".webp", "-600.webp")} 600w, ${n.image} 900w`}
+              sizes="(max-width:599px) calc(100vw - 56px), 420px"
+              fetchPriority="high"
+              decoding="async"
+              alt={n.name}
+              width="420"
+              height="420"
+            />
           </button>
         </div>
         <div className="detail-info">
@@ -185,7 +198,7 @@ export function Detail() {
             </Button>
           </div>
           <p className="availability">
-            {n.stock === 0
+            {max === 0
               ? "Edição indisponível"
               : n.stock + " disponíveis · máximo " + max + " nesta edição"}
           </p>
@@ -206,66 +219,64 @@ export function Detail() {
         </div>
       </section>
       <section className="detail-description">
-        <div
+        <Tabs
+          id="nft-info"
           className="detail-tabs"
-          role="tablist"
-          aria-label="Informações do NFT"
+          label="Informações do NFT"
+          value={tab}
+          onChange={setTab}
+          tabs={[
+            ["details", "Detalhes do NFT"],
+            ["reviews", "Avaliações de colecionadores (19)"],
+          ]}
+        />
+        <div
+          role="tabpanel"
+          id="nft-info-panel"
+          aria-labelledby={`nft-info-${tab}-tab`}
+          tabIndex={0}
         >
-          <button
-            role="tab"
-            aria-selected={tab === "details"}
-            onClick={() => setTab("details")}
-          >
-            Detalhes do NFT
-          </button>
-          <button
-            role="tab"
-            aria-selected={tab === "reviews"}
-            onClick={() => setTab("reviews")}
-          >
-            Avaliações de colecionadores (19)
-          </button>
+          {tab === "details" ? (
+            <div>
+              <p>
+                {n.name} é uma obra digital finalizada à mão da coleção Kurio
+                Editions. Cada atributo fica armazenado nos metadados do token e
+                verificado na {n.network}. A obra explora identidade, movimento
+                e luz em um mundo digital sem fronteiras.
+              </p>
+              <p>
+                A propriedade inclui a arte em alta resolução, lançamentos
+                exclusivos para colecionadores e um registro permanente de
+                procedência registrada na rede. Nova Sato recebe 5% de direitos
+                autorais nas vendas secundárias, apoiando novos trabalhos e
+                lançamentos da comunidade.
+              </p>
+              <h3>Rede:</h3>
+              <p>
+                Cunhado na {n.network} com procedência imutável e metadados
+                armazenados em IPFS.
+              </p>
+              <h3>Contrato:</h3>
+              <p>0x742…19C8 · Contrato inteligente ERC-721 verificado.</p>
+              <h3>Direitos autorais:</h3>
+              <p>
+                Direitos autorais do criador: 5% nas vendas secundárias, pagos
+                automaticamente pelos mercados compatíveis.
+              </p>
+              <small>
+                Informações ilustrativas do desafio. Nenhum ativo real será
+                transferido.
+              </small>
+            </div>
+          ) : (
+            <div>
+              <p>
+                As avaliações editoriais são ilustrativas no layout. Publicação
+                de avaliações não faz parte desta demonstração.
+              </p>
+            </div>
+          )}
         </div>
-        {tab === "details" ? (
-          <div role="tabpanel">
-            <p>
-              {n.name} é uma obra digital finalizada à mão da coleção Kurio
-              Editions. Cada atributo fica armazenado nos metadados do token e
-              verificado na {n.network}. A obra explora identidade, movimento e
-              luz em um mundo digital sem fronteiras.
-            </p>
-            <p>
-              A propriedade inclui a arte em alta resolução, lançamentos
-              exclusivos para colecionadores e um registro permanente de
-              procedência registrada na rede. Nova Sato recebe 5% de direitos
-              autorais nas vendas secundárias, apoiando novos trabalhos e
-              lançamentos da comunidade.
-            </p>
-            <h3>Rede:</h3>
-            <p>
-              Cunhado na {n.network} com procedência imutável e metadados
-              armazenados em IPFS.
-            </p>
-            <h3>Contrato:</h3>
-            <p>
-              Direitos autorais do criador: 5% nas vendas secundárias, pagos
-              automaticamente pelos mercados compatíveis.
-            </p>
-            <h3>Direitos autorais:</h3>
-            <p>0x742…19C8 · Contrato inteligente ERC-721 verificado.</p>
-            <small>
-              Informações ilustrativas do desafio. Nenhum ativo real será
-              transferido.
-            </small>
-          </div>
-        ) : (
-          <div role="tabpanel">
-            <p>
-              As avaliações editoriais são ilustrativas no layout. Publicação de
-              avaliações não faz parte desta demonstração.
-            </p>
-          </div>
-        )}
       </section>
       <Related />
       <Footer />

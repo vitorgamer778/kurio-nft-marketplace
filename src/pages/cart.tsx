@@ -5,6 +5,7 @@ import { Trash2 } from "lucide-react";
 import type { Cart as CartType, Quote, NFT, CartItem } from "../lib/contracts";
 import { get, post, put, queryClient, message } from "../lib/api";
 import { multiply } from "../lib/money";
+import { availableQuantity } from "../lib/inventory";
 import { useSession } from "../components/session";
 import { Button } from "../components/ui/button";
 import {
@@ -161,10 +162,15 @@ export function Cart() {
                     <input
                       type="number"
                       min="1"
-                      max={Math.min(
-                        nft?.stock ?? 20,
-                        item.edition === "1/1" ? 1 : 20,
-                      )}
+                      max={
+                        nft
+                          ? availableQuantity(
+                              nft,
+                              item.edition,
+                              cart.data.items,
+                            )
+                          : item.quantity
+                      }
                       value={item.quantity}
                       disabled={edit.isPending}
                       onChange={(e) => {

@@ -5,11 +5,12 @@
   "main": "index.js",
   "scripts": {
     "dev": "vite",
-    "build": "tsc --noEmit && vite build",
+    "build": "tsc --noEmit && vite build && node scripts/prerender.mjs",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
     "lint": "eslint src",
     "test": "playwright test",
+    "test:production": "playwright test --config playwright.production.config.ts",
     "test:update": "playwright test --update-snapshots",
     "audit": "node scripts/audit.mjs"
   },

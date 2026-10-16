@@ -4,6 +4,7 @@ import {
   createRouter,
   redirect,
   lazyRouteComponent,
+  defaultParseSearch,
 } from "@tanstack/react-router";
 import { Layout } from "./components/layout";
 import { SessionProvider } from "./components/session";
@@ -72,7 +73,7 @@ const home = createRoute({
     sort: typeof s.sort === "string" ? s.sort : undefined,
     tab: typeof s.tab === "string" ? s.tab : undefined,
     page: Math.max(1, Math.floor(Number(s.page) || 1)),
-    demo: s.demo === "1" ? "1" : undefined,
+    demo: String(s.demo) === "1" ? "1" : undefined,
   }),
 });
 const routes = [
@@ -122,6 +123,15 @@ const routes = [
   ),
 ];
 export const router = createRouter({
+  parseSearch: (search) => {
+    const result = defaultParseSearch(search) as Record<string, unknown>;
+    const raw = new URLSearchParams(search);
+    for (const key of ["min", "max"]) {
+      const value = raw.get(key);
+      if (value && /^\d+(\.\d{1,18})?$/.test(value)) result[key] = value;
+    }
+    return result;
+  },
   routeTree: root.addChildren(routes),
   defaultPreload: "intent",
   defaultPendingComponent: () => <p role="status">Carregando…</p>,

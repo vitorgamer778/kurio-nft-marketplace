@@ -10,6 +10,7 @@ import { get } from "../lib/api";
 import type { NFT } from "../lib/contracts";
 import { Button } from "./ui/button";
 import { Eye, EyeOff } from "lucide-react";
+import { SlideControls } from "./slide-controls";
 export function Field({
   label,
   error,
@@ -43,19 +44,25 @@ export function Password({
   name,
   required = true,
   minLength = 8,
+  error,
 }: {
   label: string;
   name: string;
   required?: boolean;
   minLength?: number;
+  error?: string;
 }) {
   const [show, setShow] = useState(false);
+  const id = useId();
   return (
     <label className="field password">
       <span>{label}</span>
       <div>
         <input
           name={name}
+          id={id}
+          aria-invalid={!!error}
+          aria-describedby={error ? id + "-error" : undefined}
           aria-label={label}
           type={show ? "text" : "password"}
           required={required}
@@ -72,6 +79,11 @@ export function Password({
           {show ? <Eye size={17} /> : <EyeOff size={17} />}
         </button>
       </div>
+      {error && (
+        <span id={id + "-error"} className="error">
+          {error}
+        </span>
+      )}
     </label>
   );
 }
@@ -144,7 +156,7 @@ export function NFTCard({
         aria-label={"Ver " + nft.name}
       >
         <img
-          src={nft.image}
+          src={nft.image.replace(".webp", "-300.webp")}
           srcSet={
             nft.image.replace(".webp", "-300.webp") +
             " 300w, " +
@@ -173,21 +185,43 @@ export function NFTCard({
   );
 }
 export function Related() {
+  const [page, setPage] = useState(0);
   const q = useQuery({
-    queryKey: ["nfts", "related"],
-    queryFn: ({ signal }) => get<{ items: NFT[] }>("/nfts", signal),
+    queryKey: ["nfts", "related", page],
+    queryFn: ({ signal }) =>
+      get<{ items: NFT[] }>("/nfts?page=" + (page + 1), signal),
   });
   return (
     <section className="related">
       <h2>Mais desta coleção</h2>
-      <div className="related-grid">
-        {q.data?.items.slice(3, 8).map((n) => (
-          <NFTCard key={n.id} nft={n} compact />
-        ))}
-      </div>
-      <div className="carousel-dots" aria-hidden>
-        ○●○
-      </div>
+      {q.isError ? (
+        <ErrorState
+          error={new Error("Não foi possível carregar a coleção.")}
+          retry={() => q.refetch()}
+        />
+      ) : (
+        <div
+          className="related-grid"
+          id="related-slides"
+          aria-live="polite"
+          aria-busy={q.isPending}
+        >
+          {q.isPending
+            ? Array.from({ length: 5 }, (_, i) => (
+                <div className="skeleton skeleton-card" key={i} />
+              ))
+            : q.data?.items
+                .slice(3, 8)
+                .map((n) => <NFTCard key={n.id} nft={n} compact />)}
+        </div>
+      )}
+      <SlideControls
+        className="carousel-dots"
+        label="Página da coleção"
+        controls="related-slides"
+        value={page}
+        onChange={setPage}
+      />
     </section>
   );
 }

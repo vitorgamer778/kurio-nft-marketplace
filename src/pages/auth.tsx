@@ -14,7 +14,9 @@ import { Button } from "../components/ui/button";
 import { Field, Password } from "../components/common";
 import { Home } from "./home";
 import { SocialIcon } from "../components/social-icon";
+import { useFormValidation } from "../components/form-validation";
 export function Auth() {
+  const validation = useFormValidation();
   const register = useRouterState().location.pathname === "/register",
     navigate = useNavigate(),
     search = useSearch({ strict: false }) as { redirect?: string },
@@ -29,21 +31,30 @@ export function Auth() {
       confirm: string;
     }) => {
       if (register) {
-        if (data.password !== data.confirm)
+        if (data.password !== data.confirm) {
+          validation.invalidate("As senhas não coincidem.", {
+            confirm: "As senhas não coincidem.",
+          });
           throw new Error("As senhas não coincidem.");
+        }
         await post("/session/register", data);
       }
-      return post<{ token: string; user: User; expires: number }>(
-        "/session/login",
-        data,
-      );
+      return post<{
+        token: string;
+        user: User;
+        expires: number;
+        cartAdjusted?: boolean;
+      }>("/session/login", data);
     },
     onSuccess: (r) => {
       login(r.token, r.user, r.expires);
+      validation.clear();
       notify(
-        register
-          ? "Perfil criado. Bem-vindo à Kurio."
-          : "Você entrou na sua conta.",
+        r.cartAdjusted
+          ? "Você entrou. As quantidades do carrinho foram ajustadas à disponibilidade."
+          : register
+            ? "Perfil criado. Bem-vindo à Kurio."
+            : "Você entrou na sua conta.",
       );
       const target =
         search.redirect?.startsWith("/") && !search.redirect.startsWith("//")
@@ -51,7 +62,11 @@ export function Auth() {
           : "/";
       navigate({ to: target });
     },
-    onError: (e) => setError(message(e)),
+    onError: (e) => {
+      setError(message(e));
+      if (!(e instanceof Error && e.message === "As senhas não coincidem."))
+        validation.fail(e);
+    },
   });
   return (
     <>
@@ -95,9 +110,11 @@ export function Auth() {
           Entre para gerenciar sua carteira, coleção e perfil de criador.
         </p>
         <form
+          ref={validation.formRef}
           onSubmit={(e) => {
             e.preventDefault();
             setError("");
+            validation.clear();
             const f = new FormData(e.currentTarget);
             mutation.mutate({
               name: String(f.get("name") || ""),
@@ -111,6 +128,7 @@ export function Auth() {
             <Field
               label="Nome de usuário"
               name="name"
+              error={validation.fields.name}
               required
               minLength={2}
               autoComplete="nickname"
@@ -119,13 +137,24 @@ export function Auth() {
           <Field
             label="E-mail"
             name="email"
+            error={validation.fields.email}
             type="email"
             required
             autoComplete="email"
             placeholder="contato@email.com"
           />
-          <Password label="Senha" name="password" />
-          {register && <Password label="Confirmar senha" name="confirm" />}
+          <Password
+            label="Senha"
+            name="password"
+            error={validation.fields.password}
+          />
+          {register && (
+            <Password
+              label="Confirmar senha"
+              name="confirm"
+              error={validation.fields.confirm}
+            />
+          )}
           {!register && (
             <button
               type="button"

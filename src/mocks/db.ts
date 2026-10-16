@@ -1,6 +1,7 @@
 import type { NFT, User, Wallet, Cart, Order, Quote } from "../lib/contracts";
 import { initialNFTs, initialUsers, initialWallets } from "./fixtures";
 import { eth, wei } from "../lib/money";
+import { availableQuantity, editionCapacity } from "../lib/inventory";
 export type Scenario =
   | "standard"
   | "slow"
@@ -56,6 +57,7 @@ function restore(): Database {
 export let db = restore();
 export function save() {
   localStorage.setItem(key, JSON.stringify(db));
+  localStorage.setItem("kurio.scenario", db.scenario);
 }
 export async function digest(password: string, salt: string) {
   const bytes = await crypto.subtle.digest(
@@ -67,6 +69,29 @@ export async function digest(password: string, salt: string) {
   ).join("");
 }
 export async function initialize() {
+  // Migrate persisted demonstrations without discarding accounts or receipts.
+  for (const n of db.nfts) {
+    n.stock = Math.max(0, n.stock);
+    if (!n.editionStock) {
+      const sold = db.orders
+        .filter((o) => o.status === "confirmed")
+        .flatMap((o) => o.quote.items)
+        .filter((i) => i.nftId === n.id);
+      const original = n.stock + sold.reduce((sum, i) => sum + i.quantity, 0);
+      n.editionStock = Object.fromEntries(
+        n.editions.map((edition) => [
+          edition,
+          Math.max(
+            0,
+            Math.min(original, editionCapacity(edition)) -
+              sold
+                .filter((i) => i.edition === edition)
+                .reduce((sum, i) => sum + i.quantity, 0),
+          ),
+        ]),
+      );
+    }
+  }
   for (const a of db.accounts)
     if (!a.hash) a.hash = await digest("Kurio123!", a.salt);
   save();
@@ -80,6 +105,7 @@ export class ApiError extends Error {
     public status: number,
     message: string,
     public fields: Record<string, string> = {},
+    public code?: string,
   ) {
     super(message);
   }
@@ -117,19 +143,14 @@ export function quote(cart: Cart): Quote {
     if (
       !Number.isInteger(item.quantity) ||
       item.quantity < 1 ||
-      item.quantity >
-        Math.min(
-          n.stock,
-          item.edition === "1/1" ? 1 : item.edition === "1/10" ? 10 : 50,
-        ) ||
-      cart.items
-        .filter((i) => i.nftId === item.nftId)
-        .reduce((sum, i) => sum + i.quantity, 0) > n.stock ||
+      item.quantity > availableQuantity(n, item.edition, cart.items) ||
       !n.editions.includes(item.edition)
     )
       throw new ApiError(
         409,
         "A edição de " + n.name + " não tem quantidade disponível.",
+        {},
+        "QUOTE_INVALID",
       );
     return {
       ...item,
@@ -158,9 +179,21 @@ export function settleOrders() {
   for (const order of db.orders) {
     if (order.status !== "pending" || Date.now() < order.settleAt) continue;
     const buyer = db.accounts.find((a) => a.user.id === order.userId)!;
+    const total = new Map<string, number>();
+    const editions = new Map<string, number>();
+    for (const line of order.quote.items) {
+      total.set(line.nftId, (total.get(line.nftId) ?? 0) + line.quantity);
+      const key = line.nftId + ":" + line.edition;
+      editions.set(key, (editions.get(key) ?? 0) + line.quantity);
+    }
     const available = order.quote.items.every((i) => {
       const n = db.nfts.find((n) => n.id === i.nftId);
-      return n && n.stock >= i.quantity;
+      return (
+        n &&
+        n.stock >= total.get(i.nftId)! &&
+        (n.editionStock[i.edition] ?? 0) >=
+          editions.get(i.nftId + ":" + i.edition)!
+      );
     });
     order.status = available ? order.outcome : "declined";
     order.version++;
@@ -168,6 +201,7 @@ export function settleOrders() {
       for (const line of order.quote.items) {
         const nft = db.nfts.find((n) => n.id === line.nftId)!;
         nft.stock -= line.quantity;
+        nft.editionStock[line.edition] -= line.quantity;
         nft.version++;
         const item = buyer.cart.items.find(
           (i) => i.nftId === line.nftId && i.edition === line.edition,

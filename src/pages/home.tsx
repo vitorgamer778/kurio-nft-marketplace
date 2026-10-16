@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Link, useNavigate, useSearch } from "@tanstack/react-router";
 import { SlidersHorizontal, Search as SearchIcon } from "lucide-react";
@@ -9,6 +9,8 @@ import { Button } from "../components/ui/button";
 import { Dialog } from "../components/ui/dialog";
 import { NFTCard, Skeleton, ErrorState } from "../components/common";
 import { Footer } from "../components/layout";
+import { Tabs } from "../components/tabs";
+import { SlideControls } from "../components/slide-controls";
 export function Home() {
   const search = useSearch({ strict: false }) as Search,
     navigate = useNavigate(),
@@ -16,6 +18,35 @@ export function Home() {
     [min, setMin] = useState(search.min || "0.02"),
     [max, setMax] = useState(search.max || "12.30"),
     [info, setInfo] = useState("");
+  const [slide, setSlide] = useState(0);
+  const slides = [
+    {
+      desktop: ["SEJA DONO DO FUTURO", "DA ARTE DIGITAL"],
+      mobile: ["SEJA DONO DA", "CULTURA DIGITAL"],
+      image: "8f387",
+      small: "83794",
+      alt: "Emerald Ape, macaco com óculos verdes e jaqueta esmeralda",
+    },
+    {
+      desktop: ["ENCONTRE SUA", "PRÓXIMA OBRA"],
+      mobile: ["ENCONTRE SUA", "PRÓXIMA OBRA"],
+      image: "83794",
+      small: "9add2",
+      alt: "Sage Nomad, macaco de chapéu e roupa violeta",
+    },
+    {
+      desktop: ["COLECIONE ARTE", "COM IDENTIDADE"],
+      mobile: ["COLECIONE ARTE", "COM IDENTIDADE"],
+      image: "b7cfc",
+      small: "8f387",
+      alt: "Golden Beat, macaco dourado com fones de ouvido",
+    },
+  ];
+  const highlight = slides[slide];
+  useEffect(() => {
+    setMin(search.min || "0.02");
+    setMax(search.max || "12.30");
+  }, [search.min, search.max]);
   const update = (part: Partial<Search>) =>
     navigate({
       to: "/",
@@ -40,10 +71,15 @@ export function Home() {
   const q = useQuery({
     queryKey: ["nfts", params.toString()],
     queryFn: ({ signal }) =>
-      get<{ items: NFT[]; pages: number; total: number }>(
-        "/nfts?" + params,
-        signal,
-      ),
+      get<{
+        items: NFT[];
+        pages: number;
+        total: number;
+        facets: {
+          collections: Record<string, number>;
+          networks: Record<string, number>;
+        };
+      }>("/nfts?" + params, signal),
   });
   const filterContent = (
     <div className="filters">
@@ -61,7 +97,7 @@ export function Home() {
       </label>
       <h2>Coleções</h2>
       <div className="filter-options">
-        {collections.map((c, i) => (
+        {collections.map((c) => (
           <label
             key={c}
             className={
@@ -71,15 +107,13 @@ export function Home() {
             }
           >
             <input
-              aria-label={
-                c + " (" + [33, 12, 65, 39, 23, 17, 19, 13, 18][i] + ")"
-              }
+              aria-label={c + " (" + (q.data?.facets.collections[c] ?? 0) + ")"}
               type="checkbox"
               checked={(search.collections || "").split(",").includes(c)}
               onChange={() => toggle("collections", c)}
             />
             <span>{c}</span>
-            <span>({[33, 12, 65, 39, 23, 17, 19, 13, 18][i]})</span>
+            <span>({q.data?.facets.collections[c] ?? 0})</span>
           </label>
         ))}
       </div>
@@ -134,16 +168,16 @@ export function Home() {
       </div>
       <h2>Rede</h2>
       <div className="filter-options">
-        {networks.map((n, i) => (
+        {networks.map((n) => (
           <label key={n}>
             <input
-              aria-label={n + " (" + [119, 78, 86][i] + ")"}
+              aria-label={n + " (" + (q.data?.facets.networks[n] ?? 0) + ")"}
               type="checkbox"
               checked={(search.networks || "").split(",").includes(n)}
               onChange={() => toggle("networks", n)}
             />
             <span>{n}</span>
-            <span>({[119, 78, 86][i]})</span>
+            <span>({q.data?.facets.networks[n] ?? 0})</span>
           </label>
         ))}
       </div>
@@ -186,19 +220,23 @@ export function Home() {
           <SlidersHorizontal />
         </Button>
       </div>
-      <section className="hero">
+      <section
+        className="hero"
+        aria-label="Destaques"
+        aria-roledescription="carrossel"
+      >
         <div className="hero-copy">
           <p>Bem-vindo à Kurio</p>
-          <h1>
+          <h1 id="hero-slide" aria-live="polite" aria-atomic="true">
             <span className="desktop-title">
-              SEJA DONO DO FUTURO
+              {highlight.desktop[0]}
               <br />
-              DA ARTE DIGITAL
+              {highlight.desktop[1]}
             </span>
             <span className="mobile-title">
-              SEJA DONO DA
+              {highlight.mobile[0]}
               <br />
-              CULTURA DIGITAL
+              {highlight.mobile[1]}
             </span>
           </h1>
           <p className="hero-description">
@@ -209,19 +247,27 @@ export function Home() {
           <Button asChild>
             <a href="#catalogo">EXPLORAR</a>
           </Button>
-          <img className="hero-dots" src="/assets/a11b7.svg" alt="" />
+          <SlideControls
+            className="hero-dots"
+            label="Destaque"
+            controls="hero-slide"
+            value={slide}
+            onChange={setSlide}
+          />
         </div>
         <img
           className="hero-art"
-          src="/assets/8f387.webp"
-          alt="Emerald Ape, macaco com óculos verdes e jaqueta esmeralda"
+          src={`/assets/${highlight.image}-300.webp`}
+          srcSet={`/assets/${highlight.image}-300.webp 300w, /assets/${highlight.image}-600.webp 600w, /assets/${highlight.image}.webp 900w`}
+          sizes="(max-width:599px) 138px, (max-width:900px) 38vw, 450px"
+          alt={highlight.alt}
           width="450"
           height="450"
           fetchPriority="high"
         />
         <img
           className="hero-small"
-          src="/assets/83794.webp"
+          src={`/assets/${highlight.small}-300.webp`}
           alt=""
           width="64"
           height="64"
@@ -255,22 +301,17 @@ export function Home() {
             />
           </label>
           <div className="catalog-toolbar">
-            <div role="tablist" aria-label="Catálogo">
-              {[
+            <Tabs
+              id="catalog"
+              label="Catálogo"
+              value={search.tab || "all"}
+              onChange={(tab) => update({ tab })}
+              tabs={[
                 ["all", "Todos os NFTs"],
                 ["new", "Novos lançamentos"],
                 ["trending", "Em alta"],
-              ].map(([value, label]) => (
-                <button
-                  key={value}
-                  role="tab"
-                  aria-selected={(search.tab || "all") === value}
-                  onClick={() => update({ tab: value })}
-                >
-                  {label}
-                </button>
-              ))}
-            </div>
+              ]}
+            />
             <label>
               Ordenar por:
               <select
@@ -284,44 +325,51 @@ export function Home() {
               </select>
             </label>
           </div>
-          {q.isPending ? (
-            <Skeleton cards />
-          ) : q.isError ? (
-            <ErrorState
-              error={new Error(message(q.error))}
-              retry={() => q.refetch()}
-            />
-          ) : q.data.items.length ? (
-            <>
-              <div className="nft-grid">
-                {q.data.items.map((n, index) => (
-                  <NFTCard key={n.id} nft={n} priority={index < 4} />
-                ))}
+          <div
+            id="catalog-panel"
+            role="tabpanel"
+            aria-labelledby={`catalog-${search.tab || "all"}-tab`}
+            tabIndex={0}
+          >
+            {q.isPending ? (
+              <Skeleton cards />
+            ) : q.isError ? (
+              <ErrorState
+                error={new Error(message(q.error))}
+                retry={() => q.refetch()}
+              />
+            ) : q.data.items.length ? (
+              <>
+                <div className="nft-grid">
+                  {q.data.items.map((n, index) => (
+                    <NFTCard key={n.id} nft={n} priority={index < 4} />
+                  ))}
+                </div>
+                <nav className="pagination" aria-label="Páginas do catálogo">
+                  {Array.from({ length: q.data.pages }, (_, i) => (
+                    <button
+                      key={i}
+                      aria-label={"Página " + (i + 1)}
+                      aria-current={
+                        (search.page || 1) === i + 1 ? "page" : undefined
+                      }
+                      onClick={() => update({ page: i + 1 })}
+                    >
+                      {i + 1}
+                    </button>
+                  ))}
+                </nav>
+              </>
+            ) : (
+              <div className="empty">
+                <h2>Nenhum NFT encontrado</h2>
+                <p>Tente outra busca ou remova os filtros.</p>
+                <Button onClick={() => navigate({ to: "/", search: {} })}>
+                  Limpar busca e filtros
+                </Button>
               </div>
-              <nav className="pagination" aria-label="Páginas do catálogo">
-                {Array.from({ length: q.data.pages }, (_, i) => (
-                  <button
-                    key={i}
-                    aria-label={"Página " + (i + 1)}
-                    aria-current={
-                      (search.page || 1) === i + 1 ? "page" : undefined
-                    }
-                    onClick={() => update({ page: i + 1 })}
-                  >
-                    {i + 1}
-                  </button>
-                ))}
-              </nav>
-            </>
-          ) : (
-            <div className="empty">
-              <h2>Nenhum NFT encontrado</h2>
-              <p>Tente outra busca ou remova os filtros.</p>
-              <Button onClick={() => navigate({ to: "/", search: {} })}>
-                Limpar busca e filtros
-              </Button>
-            </div>
-          )}
+            )}
+          </div>
         </div>
       </section>
       <section className="promos" id="criadores">

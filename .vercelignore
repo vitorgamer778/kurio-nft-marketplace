@@ -6,6 +6,7 @@ playwright-report
 verification
 screenshots
 node_modules
+.prerender
 CHALLENGE.md
 API.md
 ARCHITECTURE.md
